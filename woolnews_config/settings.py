@@ -117,3 +117,7 @@ STATIC_URL = '/static/'
 
 # User custom user model
 AUTH_USER_MODEL = 'woolnews_app.CustomUser'
+
+# Redirect user to home on login/logout
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
