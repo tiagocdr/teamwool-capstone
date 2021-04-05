@@ -6,7 +6,7 @@ TODO: project description here
 
 Members:
 
-- Chris Stranger
+- Chris Stranger <chrisstranger1@gmail.com>
 - Santiago Toro
 - Eleanor Hall
 - Joseph Dubon <josephdubon@pm.me>
