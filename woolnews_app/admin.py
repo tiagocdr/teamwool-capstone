@@ -17,4 +17,3 @@ class CustomUserAdmin(UserAdmin):
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(PostModel)
 admin.site.register(CommentModel)
-
