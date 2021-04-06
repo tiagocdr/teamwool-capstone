@@ -3,8 +3,11 @@ from django.db import models
 from django.utils import timezone
 
 
-# TODO: Favorite Model.
-# TODO : Image Implementation. 
+# TODO : Favorite Model.
+# TODO : Image Implementation.
+# TODO : Genres, probably a foreign key to posts
+# TODO : Forum, a model with a post and user foreign key, this would be where the discussion part would.
+# TODO : Favorites, still thinking about how to best implement it
 
 class CustomUser(AbstractUser):
     pass
