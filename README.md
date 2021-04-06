@@ -27,13 +27,16 @@ Approved by: Kano
 
 ## Installation
 
-TODO: Installation instructions
+```console
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
 
 ## Usage
 
 TODO: Usage instructions
-
-
 
 ## License
 
