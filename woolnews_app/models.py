@@ -8,6 +8,7 @@ from django.utils import timezone
 
 class CustomUser(AbstractUser):
     pass
+
     # add additional fields in here
 
     def __str__(self):
@@ -25,6 +26,7 @@ class PostModel(models.Model):
     def __str__(self):
         return self.title
 
+
 class CommentModel(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     text = models.CharField(max_length=140)
@@ -32,16 +34,4 @@ class CommentModel(models.Model):
     post = models.ForeignKey(PostModel, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.post, self.user
-
-
-
-
-
-
-
-
-
-
-
-
+        return f'{self.post} | {self.user}'
