@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'woolnews_app',
+    'userauth'
 ]
 
 MIDDLEWARE = [
@@ -119,7 +120,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # User custom user model
-AUTH_USER_MODEL = 'woolnews_app.CustomUser'
+AUTH_USER_MODEL = 'userauth.CustomUser'
 
 # Redirect user to home on login/logout
 LOGIN_REDIRECT_URL = 'home'

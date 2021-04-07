@@ -1,7 +1,6 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
-
+from userauth.models import CustomUser
 
 # TODO : Favorite Model.
 # TODO : Image Implementation.
@@ -9,13 +8,6 @@ from django.utils import timezone
 # TODO : Forum, a model with a post and user foreign key, this would be where the discussion part would.
 # TODO : Favorites, still thinking about how to best implement it
 
-class CustomUser(AbstractUser):
-    pass
-
-    # add additional fields in here
-
-    def __str__(self):
-        return self.username
 
 
 class PostModel(models.Model):
