@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'woolnews_app',
-    'userauth'
+    'userauth',
+    'favorites',
+    'discussion'
 ]
 
 MIDDLEWARE = [

@@ -1,13 +1,37 @@
 from django.db import models
+from django.db.models.base import Model
 from django.utils import timezone
+from discussion.models import DiscussionModel
 from userauth.models import CustomUser
 
-# TODO : Favorite Model.
 # TODO : Image Implementation.
-# TODO : Genres, probably a foreign key to posts
-# TODO : Forum, a model with a post and user foreign key, this would be where the discussion part would.
-# TODO : Favorites, still thinking about how to best implement it
+# TODO: for v2 users can create genres.
+# TODO: Automatically default to a general genre if not provided one.
 
+class GenreModel(models.Model):
+    CHOICES = (
+        ('At','Automotive'),
+        ('Sp', 'Sports'),
+        ('At','Arts'),
+        ('Pl','Politics'),
+        ('CC','Climate Change'),
+        ('Op','Opinion'),
+        ('DJ','DadJokes'),
+        ('def', 'general')
+    )
+    name = models.CharField(choices=CHOICES, max_length=20, default='def')
+
+    def __str__(self):
+        return self.name
+
+class CommentModel(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    text = models.CharField(max_length=140)
+    timestamp = models.TimeField(default=timezone.now)
+    # post = models.ForeignKey(PostModel, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.post} | {self.user}'
 
 
 class PostModel(models.Model):
@@ -17,16 +41,12 @@ class PostModel(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     timestamp = models.TimeField(default=timezone.now)
     support = models.IntegerField(default=0, blank=True)
+    genre = models.ForeignKey(GenreModel, on_delete=models.CASCADE,  null=True)
+    discussion = models.ManyToManyField(DiscussionModel, null=True, blank=True)
+    comments = models.ManyToManyField(CommentModel, null=True, blank=True)
 
     def __str__(self):
         return self.title
 
 
-class CommentModel(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    text = models.CharField(max_length=140)
-    timestamp = models.TimeField(default=timezone.now)
-    post = models.ForeignKey(PostModel, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'{self.post} | {self.user}'
