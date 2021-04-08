@@ -4,10 +4,10 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
+
     # favorites = models.ManyToManyField(PostModel, on_delete=models.CASCADE, blank=True)
     # add additional fields in here
     def __str__(self):
         return self.username
-    pass
 
 
