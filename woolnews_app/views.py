@@ -1,5 +1,7 @@
-from django.shortcuts import render
-
+from woolnews_app.models import PostModel
+from woolnews_app.forms import PostForm
+from django.shortcuts import render, redirect
+from .forms import PostForm
 
 # TODO: Post View
 
@@ -36,4 +38,25 @@ def contact_view(request):
         request,
         'contact.html',
         {}
+    )
+
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            PostModel.objects.create(
+                title=data['title'],
+                body=data['body'],
+                user=request.user
+            )
+            print(data['img'])
+            return redirect('home')
+
+    form = PostForm()
+    return render(
+        request,
+        'post-form.html',
+        {'form': form}
     )

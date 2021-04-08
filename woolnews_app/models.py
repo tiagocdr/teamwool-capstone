@@ -37,7 +37,7 @@ class CommentModel(models.Model):
 class PostModel(models.Model):
     title = models.CharField(max_length=100)
     body = models.CharField(max_length=1000)
-    # img = models.ImageField()
+    img = models.ImageField(upload_to='images/', blank=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     timestamp = models.TimeField(default=timezone.now)
     support = models.IntegerField(default=0, blank=True)

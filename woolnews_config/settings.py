@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'woolnews_app',
     'userauth',
     'favorites',
-    'discussion'
+    'discussion',
 ]
 
 MIDDLEWARE = [

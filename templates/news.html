@@ -10,6 +10,7 @@
         Hi {{ user.username }}, you are on the homepage!!
         <p>
             <a href="{% url 'logout' %}">Log Out</a>
+            <a href="{% url 'create' %}">Create</a>
         </p>
     {% else %}
         <p>You are not logged in</p>
