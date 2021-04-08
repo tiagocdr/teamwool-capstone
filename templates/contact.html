@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Home
+    Contact
 {% endblock %}
 
 {% block content %}
-    <h1>Wool Team News App with Likes Feature</h1>
+    <h1>Wool Team News App: CONTACT PAGE</h1>
     {% if user.is_authenticated %}
-        Hi {{ user.username }}, you are on the homepage!!
+        Hi {{ user.username }}, you are on the contact page!!
         <p>
             <a href="{% url 'logout' %}">Log Out</a>
         </p>
