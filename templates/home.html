@@ -7,7 +7,7 @@
 {% block content %}
     <h1>Wool Team News App with Likes Feature</h1>
     {% if user.is_authenticated %}
-        Hi {{ user.username }}, you are on the homepage!!
+        Hi {{ user.first_name }}, you are on the homepage!!
         <p>
            <a href="{% url 'edit_profile' %}">edit_profile</a> 
             <a href="{% url 'logout' %}">Log Out</a>
