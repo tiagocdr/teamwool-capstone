@@ -15,13 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic.base import TemplateView
+
+from woolnews_app import views
 
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('admin/', admin.site.urls),
+
+    path('', views.home_view, name='home'),
+    path('forum/', views.forum_view, name='forum'),
+    path('about/', views.about_view, name='about'),
+    path('contact/', views.contact_view, name='contact'),
+
     path('accounts/', include('userauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-
 ]

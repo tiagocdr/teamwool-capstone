@@ -3,17 +3,37 @@ from django.shortcuts import render
 
 # TODO: Post View
 
-# @login_required
-# def create_post_view(request):
-#     template_name = "generic_form.html"
-#     form = PostForm()
+# TEMP Home/News list view
+def home_view(request):
+    return render(
+        request,
+        'news.html',
+        {}
+    )
 
-#     if request.method == "POST":
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             data = form.cleaned_data
-#             post = Post.objects.create(
-#                 body=data.get("body"), creator=request.user)
-#             return redirect(reverse("post_detail", args=(post.id,)))
 
-#     return render(request, template_name, {"form": form, "header": "Create a Post"})
+# TEMP Forum list view
+def forum_view(request):
+    return render(
+        request,
+        'forum.html',
+        {}
+    )
+
+
+# TEMP About view
+def about_view(request):
+    return render(
+        request,
+        'about.html',
+        {}
+    )
+
+
+# TEMP Contact view
+def contact_view(request):
+    return render(
+        request,
+        'contact.html',
+        {}
+    )
