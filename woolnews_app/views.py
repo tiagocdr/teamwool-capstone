@@ -51,7 +51,6 @@ def create_post(request):
                 body=data['body'],
                 user=request.user
             )
-            print(data['img'])
             return redirect('home')
 
     form = PostForm()

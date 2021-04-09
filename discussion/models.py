@@ -9,7 +9,7 @@ class DiscussionModel(models.Model):
     title = models.CharField(max_length=140)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     body = models.CharField(max_length=300, blank=True)
-    # Like
+    # votes
     # thread
 
     def __str__(self):
