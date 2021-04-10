@@ -1,5 +1,5 @@
-from woolnews_app.models import PostModel
-from woolnews_app.forms import PostForm
+from woolnews_app.models import PostModel, CommentModel
+from woolnews_app.forms import PostForm, CommentForm
 from django.shortcuts import render, redirect
 from .forms import PostForm
 
@@ -40,19 +40,39 @@ def contact_view(request):
         {}
     )
 
+def post_view(request, post_id):
+    post = PostModel.objects.get(id=post_id)
+    comments_form = CommentForm()
+    comments = post.comments.all().order_by('-timestamp')
+    context = {
+        'post': post,
+        'form':comments_form,
+        'comments': comments,
+        'lenght': len(comments)
+        }
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            post.comments.create(
+                user=request.user,
+                text=data['text']
+                )
+            return redirect('post view', post_id=post.id)
+    return render(request, 'post.html', context)
+
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
-            PostModel.objects.create(
+            post = PostModel.objects.create(
                 title=data['title'],
                 body=data['body'],
                 user=request.user
             )
-            print(data['img'])
-            return redirect('home')
+            return redirect('post view', post_id=post.id)
 
     form = PostForm()
     return render(
