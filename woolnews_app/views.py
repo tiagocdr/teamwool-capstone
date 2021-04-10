@@ -40,18 +40,23 @@ def contact_view(request):
         {}
     )
 
+def post_view(request, post_id):
+    post = PostModel.objects.get(id=post_id)
+    print(dir(post.img), post.img)
+    return render(request, 'post.html', {'post': post})
+
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
-            PostModel.objects.create(
+            post = PostModel.objects.create(
                 title=data['title'],
                 body=data['body'],
                 user=request.user
             )
-            return redirect('home')
+            return redirect('post view', post_id=post.id)
 
     form = PostForm()
     return render(
