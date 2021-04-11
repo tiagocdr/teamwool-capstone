@@ -3,9 +3,13 @@ from django.db.models.base import Model
 from django.utils import timezone
 from discussion.models import DiscussionModel
 from userauth.models import CustomUser
+<<<<<<< HEAD
 from django.urls import reverse
 # TODO : Image Implementation.
 # TODO: for v2 users can create genres.
+=======
+
+>>>>>>> 6cca6f905b4925619fd7fa4bcef50e142bdd3c63
 # TODO: Automatically default to a general genre if not provided one.
 
 class GenreModel(models.Model):
@@ -28,10 +32,10 @@ class CommentModel(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     text = models.CharField(max_length=140)
     timestamp = models.TimeField(default=timezone.now)
-    # post = models.ForeignKey(PostModel, on_delete=models.CASCADE)
+    votes = models.IntegerField(default=0, blank=True)
 
     def __str__(self):
-        return f'{self.post} | {self.user}'
+        return f'{self.text} | {self.user}'
 
 
 class PostModel(models.Model):
