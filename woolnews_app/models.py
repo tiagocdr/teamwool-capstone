@@ -3,13 +3,9 @@ from django.db.models.base import Model
 from django.utils import timezone
 from discussion.models import DiscussionModel
 from userauth.models import CustomUser
-<<<<<<< HEAD
 from django.urls import reverse
 # TODO : Image Implementation.
 # TODO: for v2 users can create genres.
-=======
-
->>>>>>> 6cca6f905b4925619fd7fa4bcef50e142bdd3c63
 # TODO: Automatically default to a general genre if not provided one.
 
 class GenreModel(models.Model):
@@ -53,4 +49,4 @@ class PostModel(models.Model):
         return self.title + ' | ' + str(self.user)
 
     def get_absolute_url(self):
-        return reverse('create-post', args=(str(self.id)))
+        return reverse('home')
