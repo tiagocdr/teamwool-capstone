@@ -10,9 +10,9 @@
         Hi {{ user.first_name }}, you are on the homepage!!
       <ul>
        {% for post in object_list%}
-        <li> <a href="{% url 'forum-details' post.pk %}">{{post.title}}</a>-{{post.user.first_name}}
+        <li> <a href="{% url 'post view' post.pk %}">{{post.title}}</a>-{{post.user.first_name}}
         <br/>
-         {{post.img.url}}
+         {{post.img}}
          <br/>
           {{post.body}}
           
