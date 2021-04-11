@@ -4,7 +4,7 @@
 <div class='news_body'>
 
     <h1>{{post.title}}</h1>
-    <p>by: {{post.user}}</p>
+    <p><a href="/profile/{{post.user.id}}">>by: {{post.user}}</a></p>
     <p>category: {{post.genre}}</p>
     {{post.body}}
 <!-- <img src="{{ post.img }}"> Working this out -->
@@ -21,7 +21,7 @@
 <div>
 
     {%for c in comments%}
-    <h3>{{c.user}}</h3>
+    <h3><a href="/profile/{{c.user.id}}">{{c.user}}</a></h3>
     <p>{{c.text}}</p>
     <span>{{c.timestamp}}</span> <span>likes:{{c.votes}}</span>
     {%endfor%}

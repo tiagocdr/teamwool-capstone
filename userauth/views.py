@@ -7,7 +7,14 @@ from django.contrib.auth.forms import UserChangeForm
 from woolnews_app.forms import PostForm
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
+from .models import CustomUser
 # SignUp View
+
+
+def user_profile(request, user_id):
+    user = CustomUser.objects.get(id=user_id)
+    return render(request,'user.html', {'user':user})
+    
 
 
 class SignUpView(generic.CreateView):

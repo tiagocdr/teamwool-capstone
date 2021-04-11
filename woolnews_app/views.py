@@ -20,9 +20,9 @@ class  HomeView(ListView):
 #         'news.html',
 #         {}
 #     )
-# class DiscussionView(DetailView):
-#     model = PostModel
-#     template_name = 'forum.html'
+class DiscussionView(DetailView):
+    model = PostModel
+    template_name = 'forum.html'
 # TEMP Forum list view
 # def forum_view(request):
 #     return render(
