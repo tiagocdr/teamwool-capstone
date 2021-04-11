@@ -9,8 +9,16 @@
     {% if user.is_authenticated %}
         Hi {{ user.username }}, you are on the forum page!!
         <p>
-            <a href="{% url 'logout' %}">Log Out</a>
+        <h2> {{post.title}}</h2>
+         <small> 
+         By: {{post.user.username}} </small><br/>
+         <hr>
+         <br/>
+         {{post.body}}
+          {{post.img.url}}
         </p>
+
+        
     {% else %}
         <p>You are not logged in</p>
         <a href="{% url 'login' %}">Log In</a> |
