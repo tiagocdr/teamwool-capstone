@@ -3,8 +3,8 @@
 {% block content %}
 <div class='news_body'>
 
-    <h1><a href="/profile/{{post.user.id}}">{{post.title}}</a></h1>
-    <p>by: {{post.user}}</p>
+    <h1>{{post.title}}</h1>
+    <p><a href="/profile/{{post.user.id}}">>by: {{post.user}}</a></p>
     <p>category: {{post.genre}}</p>
     {{post.body}}
 <!-- <img src="{{ post.img }}"> Working this out -->
