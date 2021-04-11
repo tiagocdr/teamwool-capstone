@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from woolnews_app.views import HomeView, ForumView, AboutView, ContactView, AddBlogView
+from woolnews_app.views import HomeView, DiscussionView, AboutView, ContactView
+from woolnews_app import views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,11 +24,17 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='home'),
-    path('forum/<int:pk>', ForumView.as_view(), name='forum-details'),
+    path('forum/<int:pk>', DiscussionView.as_view(), name='forum-details'),
     path('about/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
-    path('create/', AddBlogView.as_view(), name='create-post'),
-    # path('profile/', ProfileView, name='profile'),
+    path('', views.home_view, name='home'),
+    path('forum/', views.forum_view, name='forum'),
+    path('create/', views.create_post, name='create'),
+    path('post/<int:post_id>', views.post_view, name='post view'),
     path('accounts/', include('userauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
