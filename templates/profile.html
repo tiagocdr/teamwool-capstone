@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block content %}
+    <h2>Profile</h2>
+<div class="form-group">
+    <form method = "POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.media}}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+        <button type="submit">Post</button>
+    </form>
+</div>
+<a href="{% url 'edit_profile' %}">edit_profile</a> 
+
+    {% endblock %}
+

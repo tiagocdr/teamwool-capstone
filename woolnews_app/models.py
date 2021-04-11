@@ -3,7 +3,7 @@ from django.db.models.base import Model
 from django.utils import timezone
 from discussion.models import DiscussionModel
 from userauth.models import CustomUser
-
+from django.urls import reverse
 # TODO : Image Implementation.
 # TODO: for v2 users can create genres.
 # TODO: Automatically default to a general genre if not provided one.
@@ -35,7 +35,7 @@ class CommentModel(models.Model):
 
 
 class PostModel(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     body = models.CharField(max_length=1000)
     img = models.ImageField(upload_to='images/', blank=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -46,7 +46,7 @@ class PostModel(models.Model):
     comments = models.ManyToManyField(CommentModel, null=True, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.title + ' | ' + str(self.user)
 
-
-
+    def get_absolute_url(self):
+        return reverse('create-post', args=(str(self.id)))

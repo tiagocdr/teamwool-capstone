@@ -5,10 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    <h2>New's Draft</h2>
-    <form method = "post" enctype="multipart/form-data">
+    <h2>{{post.title}}</h2>
+    <table>
+    <form method = "POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
+        {{ form.as_table }}
     </form>
+
+    </table>
+        <button type="submit">Upload</button>
     {% endblock %}

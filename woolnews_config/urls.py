@@ -15,18 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from woolnews_app import views
+from woolnews_app.views import HomeView, ForumView, AboutView, ContactView, AddBlogView
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home_view, name='home'),
-    path('forum/', views.forum_view, name='forum'),
-    path('about/', views.about_view, name='about'),
-    path('contact/', views.contact_view, name='contact'),
-    path('create/', views.create_post, name='create'),
+    path('', HomeView.as_view(), name='home'),
+    path('forum/<int:pk>', ForumView.as_view(), name='forum-details'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('contact/', ContactView.as_view(), name='contact'),
+    path('create/', AddBlogView.as_view(), name='create-post'),
+    # path('profile/', ProfileView, name='profile'),
     path('accounts/', include('userauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
