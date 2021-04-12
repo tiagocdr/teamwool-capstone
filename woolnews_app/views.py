@@ -1,7 +1,7 @@
 
 from typing import Generator
 from django.http import request
-from woolnews_app.models import PostModel
+from woolnews_app.models import CommentModel, PostModel
 from django.views.generic import ListView, DetailView, CreateView
 from woolnews_app.forms import PostForm, CommentForm
 from django.shortcuts import render, redirect
@@ -43,6 +43,23 @@ class ContactView(ListView):
     model = PostModel
     template_name = 'contact.html'
 # TEMP Contact view
+
+def like_comment(request, comment_id):
+    comment = CommentModel.objects.get(id=comment_id)
+    comment.votes += 1
+    comment.save()
+    user = comment.user
+    post = PostModel.objects.get(user=user, comments=comment)
+    return redirect('post view', post_id=post.id)
+
+def like_post(request, post_id):
+    post = PostModel.objects.get(id=post_id)
+    post.support += 1 
+    print(post.support)
+    post.save()
+
+    return redirect('post view', post_id=post.id)
+
 
 def post_view(request, post_id):
     post = PostModel.objects.get(id=post_id)

@@ -6,9 +6,14 @@
     <h1>{{post.title}}</h1>
     <p><a href="/profile/{{post.user.id}}">>by: {{post.user}}</a></p>
     <p>category: {{post.genre}}</p>
-    {{post.body}}
+    <p>{{post.support}} people like this</p>
+    <div>
+        {{post.body}}
+    </div>
+    <button><a href="/postlike/{{post.id}}">Support</a></button>
 <!-- <img src="{{ post.img }}"> Working this out -->
 </div>
+<!-- Comment section start -->
 <div>
     <h3>{{lenght}} comments</h3>
     <form method = "post" action="">
@@ -23,6 +28,7 @@
     <h3><a href="/profile/{{c.user.id}}">{{c.user}}</a></h3>
     <p>{{c.text}}</p>
     <span>{{c.timestamp}}</span> <span>likes:{{c.votes}}</span>
+    <a href="/commentlike/{{c.id}}">Like</a>
     {%endfor%}
 </div>
 {% endblock %}
