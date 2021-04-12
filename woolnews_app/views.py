@@ -11,26 +11,6 @@ class  HomeView(ListView):
     model = PostModel
     template_name = 'news.html'
 
-# TODO: Post View
-
-# TEMP Home/News list view
-# def home_view(request):
-#     return render(
-#         request,
-#         'news.html',
-#         {}
-#     )
-class DiscussionView(DetailView):
-    model = PostModel
-    template_name = 'forum.html'
-# TEMP Forum list view
-# def forum_view(request):
-#     return render(
-#         request,
-#         'forum.html',
-#         {}
-#     )
-
 
 class AboutView(ListView):
     model = PostModel

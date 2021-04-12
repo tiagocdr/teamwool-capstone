@@ -2,7 +2,6 @@
 
 {% block content %}
 <div class='news_body'>
-
     <h1>{{post.title}}</h1>
     <p><a href="/profile/{{post.user.id}}">>by: {{post.user}}</a></p>
     <p>category: {{post.genre}}</p>
@@ -11,10 +10,11 @@
         {{post.body}}
     </div>
     <button><a href="/postlike/{{post.id}}">Support</a></button>
+    <a href="/createforum/{{post.id}}">Open a Discussion</a>
 <!-- <img src="{{ post.img }}"> Working this out -->
 </div>
 <!-- Comment section start -->
-<div>
+<div class="comments">
     <h3>{{lenght}} comments</h3>
     <form method = "post" action="">
         {% csrf_token %}
