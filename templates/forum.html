@@ -1,27 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    Forum
-{% endblock %}
-
 {% block content %}
-    <h1>Wool Team News App: FORUM</h1>
-    {% if user.is_authenticated %}
-        Hi {{ user.username }}, you are on the forum page!!
-        <p>
-        <h2> {{post.title}}</h2>
-         <small> 
-         By: {{post.user.username}} </small><br/>
+        <h2> {{discussion.title}}</h2>
+    <p></p>
+    <small> 
+        <a href="/profile/{{discussion.user.id}}">>by: {{discussion.user}}</a> </small><br/>
          <hr>
          <br/>
-         {{post.body}}
-          {{post.img.url}}
+         <div>
+            {{discussion.body}}
+        </div>
         </p>
-
-        
-    {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">Log In</a> |
-        <a href="{% url 'signup' %}">Sign Up</a>
-    {% endif %}
 {% endblock %}

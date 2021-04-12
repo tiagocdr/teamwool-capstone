@@ -4,9 +4,6 @@ from django.utils import timezone
 from discussion.models import DiscussionModel
 from userauth.models import CustomUser
 from django.urls import reverse
-
-# TODO : Image Implementation.
-# TODO: for v2 users can create genres.
 # TODO: Automatically default to a general genre if not provided one.
 
 class GenreModel(models.Model):

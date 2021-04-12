@@ -2,14 +2,19 @@
 
 {% block content %}
 <div class='news_body'>
-
     <h1>{{post.title}}</h1>
-    <p>by: {{post.user}}</p>
+    <p><a href="/profile/{{post.user.id}}">>by: {{post.user}}</a></p>
     <p>category: {{post.genre}}</p>
-    {{post.body}}
-<!-- <img src="{{ post.img }}"> Working this out -->
+    <p>{{post.support}} people like this</p>
+    <div>
+        {{post.body}}
+    </div>
+    <button><a href="/postlike/{{post.id}}">Support</a></button>
+    <a href="/createforum/{{post.id}}">Open a Discussion</a>
+<img src="{{ post.img.url }}" width="200" height="200"> Working this out
 </div>
-<div>
+<!-- Comment section start -->
+<div class="comments">
     <h3>{{lenght}} comments</h3>
     <form method = "post" action="">
         {% csrf_token %}
@@ -19,11 +24,11 @@
 </div>
 
 <div>
-
     {%for c in comments%}
-    <h3>{{c.user}}</h3>
+    <h3><a href="/profile/{{c.user.id}}">{{c.user}}</a></h3>
     <p>{{c.text}}</p>
     <span>{{c.timestamp}}</span> <span>likes:{{c.votes}}</span>
+    <a href="/commentlike/{{c.id}}">Like</a>
     {%endfor%}
 </div>
 {% endblock %}

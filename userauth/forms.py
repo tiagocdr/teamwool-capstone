@@ -32,5 +32,5 @@ class EditProfileForm(UserChangeForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
     class Meta:
-        model = User
-        fields = {'username', 'email', 'first_name', 'last_name'}
+        model = CustomUser
+        fields = {'email', 'first_name', 'last_name', 'img', 'bio'}
