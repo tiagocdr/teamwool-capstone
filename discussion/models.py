@@ -1,5 +1,7 @@
 from django.db import models
 from userauth.models import CustomUser
+from django.utils import timezone
+
 # Create your models here.
 
 # TODO: Add a body
@@ -9,9 +11,13 @@ class DiscussionModel(models.Model):
     title = models.CharField(max_length=140)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     body = models.CharField(max_length=300, blank=True)
-    # votes
-    # thread
-
+    likes = models.IntegerField(default=0, blank=True, null=True)
+    # To avoid circular imports we call the model with a string.
+    comments = models.ManyToManyField('woolnews_app.CommentModel', blank=True,null=True)
+    timestamp = models.TimeField(default=timezone.now)
+    # True for Active, false for closed.
+    status = models.BooleanField(default=True)
+    
     def __str__(self):
         return self.title
     
