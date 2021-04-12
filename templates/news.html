@@ -12,10 +12,10 @@
        {% for post in object_list%}
         <li> <a href="{% url 'forum-details' post.pk %}">{{post.title}}</a>-{{post.user.first_name}}
         <br/>
-         {{post.img.url}}
+        <img src="{{post.img.url}}" width="200", height="200">
          <br/>
           {{post.body}}
-          
+          {{post.support}}
           <br/>
           {{post.timestamp}}
            </li>

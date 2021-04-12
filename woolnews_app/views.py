@@ -62,11 +62,6 @@ class ContactView(ListView):
 #         'contact.html',
 #         {}
 #     )
-    
-    
-class ProfileView(DetailView):
-    model = PostModel
-    template_name = 'profile.html'
 
 
 def CreatePostView(request):
