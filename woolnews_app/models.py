@@ -15,7 +15,7 @@ class GenreModel(models.Model):
         ('CC','Climate Change'),
         ('Op','Opinion'),
         ('DJ','DadJokes'),
-        ('def', 'general')
+        ('def', 'General')
     )
     name = models.CharField(choices=CHOICES, max_length=20, default='def')
 
