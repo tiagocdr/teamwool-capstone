@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <h2> {{discussion.title}}</h2>
+        <h2> {{discussion.title}} about <a href="/post/{{discussion.post.id}}">{{discussion.post.title}}</a></h2>
+        {%if discussion.status%}
+        <p>Open</p> 
+        {%else%}
+        <p>Closed</p>
+        {%endif%}
     <small> 
         <a href="/profile/{{discussion.user.id}}">>by: {{discussion.user}}</a> </small>
         <br/>
          <hr>
          <br/>
          <div>
-            {{discussion.body}}
+            <p>
+                {{discussion.body}}
+            </p>
         </div>
-        </p>
+        <hr>
         <div class="comments">
             <h3>{{ lenght }} comments</h3>
             <form method="post" action="">

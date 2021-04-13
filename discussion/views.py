@@ -51,6 +51,7 @@ def create_discussion(request, post_id):
                 user=request.user,
                 title=data['title'],
                 body=data['body'],
+                post=post
                 )
             return redirect('forum-details', forum_id=forum.id)
     form = DiscussionForm()
