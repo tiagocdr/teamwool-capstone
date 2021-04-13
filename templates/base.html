@@ -128,7 +128,6 @@
                 <a href="{% url 'create' %}">Create Post</a> -
                 <a href="/profile/{{ request.user.id }}">Profile</a> -
                 <a href="{% url 'logout' %}">Logout</a>
-
             {% else %}
                 <a class="btn btn-sm btn-outline-secondary" href="{% url 'signup' %}">Sign up</a>
                 <a class="btn btn-sm btn-outline-primary" href="{% url 'login' %}">Log In</a>

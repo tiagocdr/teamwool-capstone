@@ -13,15 +13,19 @@
                 <h1>{{ post.title }}</h1>
                 <p><a href="/profile/{{ post.user.id }}">>by: {{ post.user }}</a></p>
                 <p>category: {{ post.genre }}</p>
-                <p>{{ post.support }} people like this</p>
+                <p>{{ favs }} people saved this</p>
                 <div>
                     {{ post.body }}
                 </div>
-                <button class="btn btn-sm btn-outline-secondary"><a href="/postlike/{{ post.id }}">Support</a></button>
+                {%if is_faved%}
+                <span><a href="/favpost/{{post.id}}">Unsave</a></span>
+                {%else%}
+                <span><a href="/favpost/{{post.id}}">Save</a></span>
+                {%endif%}
                 <small>
                     <a href="/createforum/{{ post.id }}">Open a Discussion</a>
                 </small>
-                <img src="{{ post.img.url }}"> Working this out
+                <img src="{{ post.img.url }}" class="post-image">
             </div>
             <!-- Comment section start -->
             <div class="comments">

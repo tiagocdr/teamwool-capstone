@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from woolnews_app.views import HomeView, AboutView, ContactView
+from woolnews_app.views import HomeView, AboutView, ContactView, fav_post
 # from discussion.views import DiscussionView
 from woolnews_app import views
 from discussion.views import create_discussion, discussion_view, like_comment_forum, fav_forum
@@ -36,8 +36,9 @@ urlpatterns = [
     path('profile/<int:pk>', ProfileView.as_view(), name='profile'),
     #Post views
     path('create/', views.create_post, name='create'),
-    path('postlike/<int:post_id>', views.like_post, name='like post'),
+    # path('postlike/<int:post_id>', views.like_post, name='like post'),
     path('post/<int:post_id>', views.post_view, name='post view'),
+    path('favpost/<int:post_id>', views.fav_post, name='fav post'),
     #Forum Views
     path('forum/<int:forum_id>', discussion_view, name='forum-details'),
     path('createforum/<int:post_id>', create_discussion, name='create forum'),

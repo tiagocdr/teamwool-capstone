@@ -47,7 +47,7 @@ class PostModel(models.Model):
     img = models.ImageField(upload_to='images/', blank=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     timestamp = models.TimeField(default=timezone.now)
-    support = models.IntegerField(default=0, blank=True)
+    favs = models.ManyToManyField('favorites.FavoritesModel', blank=True)
     genre = models.ForeignKey(GenreModel, on_delete=models.CASCADE,  null=True)
     discussion = models.ManyToManyField(DiscussionModel, null=True, blank=True)
     comments = models.ManyToManyField(CommentModel, null=True, blank=True)
