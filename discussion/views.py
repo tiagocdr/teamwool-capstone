@@ -20,16 +20,32 @@ def like_comment_forum(request, comment_id):
     discussion = DiscussionModel.objects.get(user=user, comments=comment)
     return redirect('forum-details', forum_id=discussion.id)
 
+def fav_forum(request, forum_id):
+    discussion = DiscussionModel.objects.get(id=forum_id)
+    model = FavoritesModel.objects.filter(user=request.user,discussion=discussion)
+    if model:
+        model.delete()
+        return redirect('forum-details', forum_id=discussion.id)
+    FavoritesModel.objects.create(  
+        user=request.user,
+        discussion=discussion
+    )
+    return redirect('forum-details', forum_id=discussion.id)
+
 
 def discussion_view(request, forum_id):
     discussion = DiscussionModel.objects.get(id=forum_id)
     form = CommentForm()
     comments = discussion.comments.all().order_by('-timestamp')
-    favs = FavoritesModel.objects.get(discussion=discussion)
+    favs = FavoritesModel.objects.filter(discussion=discussion)
+    # Check if user faved it.
+    is_faved = FavoritesModel.objects.filter(user=request.user, discussion=discussion)
     context = {
         'discussion':discussion,
         'form': form,
-        'comments': comments
+        'comments': comments,
+        'favs': len(favs),
+        'is_faved': is_faved
         }
 
     if request.method == 'POST':
