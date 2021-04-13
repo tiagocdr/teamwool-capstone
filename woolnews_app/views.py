@@ -71,7 +71,8 @@ def create_post(request):
             post = PostModel.objects.create(
                 title=data['title'],
                 body=data['body'],
-                user=request.user
+                user=request.user,
+                img=data['img']
             )
             return redirect('post view', post_id=post.id)
 

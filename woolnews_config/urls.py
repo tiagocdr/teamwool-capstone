@@ -22,6 +22,7 @@ from woolnews_app import views
 from discussion.views import create_discussion, discussion_view
 from django.conf import settings
 from django.conf.urls.static import static
+from userauth.views import UserEditView, ProfileView
 from userauth.urls import urlpatterns as user_urls
 
 
@@ -31,6 +32,9 @@ urlpatterns = [
     path('forum/<int:forum_id>', discussion_view, name='forum-details'),
     path('about/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
+    # path('create/', AddBlogView.as_view(), name='create-post'),
+    path('edit_profile/', UserEditView.as_view(), name='edit_profile'),
+    path('profile/<int:pk>', ProfileView.as_view(), name='profile'),
     path('create/', views.create_post, name='create'),
     path('createforum/<int:post_id>', create_discussion, name='create forum'),
     path('postlike/<int:post_id>', views.like_post, name='like post'),
