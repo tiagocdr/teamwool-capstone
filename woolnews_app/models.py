@@ -32,13 +32,13 @@ class CommentModel(models.Model):
         return f'{self.text} | {self.user}'
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(CustomUser, null=True, on_delete=models.CASCADE)
-    bio = models.TextField()
-    img = models.ImageField(upload_to='images/', blank=True)
+# class Profile(models.Model):
+#     user = models.OneToOneField(CustomUser, null=True, on_delete=models.CASCADE)
+#     bio = models.TextField()
+#     img = models.ImageField(upload_to='images/', blank=True)
     
-    def __str__(self):
-        return str(self.user)
+#     def __str__(self):
+#         return str(self.user)
 
 
 class PostModel(models.Model):

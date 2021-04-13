@@ -8,7 +8,6 @@ from django.contrib.auth.forms import UserChangeForm
 from woolnews_app.forms import PostForm
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import get_object_or_404, render, redirect
-from woolnews_app.models import Profile
 from .models import CustomUser
 # SignUp View
 
