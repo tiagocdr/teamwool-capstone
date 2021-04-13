@@ -10,8 +10,9 @@ from django.utils import timezone
 class DiscussionModel(models.Model):
     title = models.CharField(max_length=140)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    post = models.ForeignKey('woolnews_app.PostModel', on_delete=models.CASCADE)
     body = models.CharField(max_length=300, blank=True)
-    likes = models.IntegerField(default=0, blank=True, null=True)
+    favs = models.ManyToManyField('favorites.FavoritesModel', blank=True, null=True)
     # To avoid circular imports we call the model with a string.
     comments = models.ManyToManyField('woolnews_app.CommentModel', blank=True,null=True)
     timestamp = models.TimeField(default=timezone.now)

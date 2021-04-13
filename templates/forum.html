@@ -1,14 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <h2> {{discussion.title}}</h2>
-    <p></p>
-    <small> 
-        <a href="/profile/{{discussion.user.id}}">>by: {{discussion.user}}</a> </small><br/>
+        <h2> {{discussion.title}} about <a href="/post/{{discussion.post.id}}">{{discussion.post.title}}</a></h2>
+        {%if discussion.status%}
+        <p>Open</p> 
+        {%else%}
+        <p>Closed</p>
+        {%endif%}
+        <span>{{favs}} people saved this.</span> 
+        {%if is_faved%}
+        <span><a href="/favforum/{{discussion.id}}">Unsave</a></span>
+        {%else%}
+        <span><a href="/favforum/{{discussion.id}}">Save</a></span>
+        {%endif%}
+        <br>
+        <a href="/profile/{{discussion.user.id}}">>by: {{discussion.user}}</a> </small>
+        <br/>
          <hr>
          <br/>
          <div>
-            {{discussion.body}}
+            <p>
+                {{discussion.body}}
+            </p>
         </div>
-        </p>
+        <hr>
+        <div class="comments">
+            <h3>{{ lenght }} comments</h3>
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-md btn-outline-secondary" type="submit">Comment</button>
+            </form>
+        </div>
+        <div>
+            {% for c in comments %}
+                <h3><a href="/profile/{{ c.user.id }}">{{ c.user }}</a></h3>
+                <p>{{ c.text }}</p>
+                <span>{{ c.timestamp }}</span> <span>likes:{{ c.votes }}</span>
+                <a href="/commentlikeforum/{{ c.id }}">Like</a>
+            {% endfor %}
+        </div>
 {% endblock %}
