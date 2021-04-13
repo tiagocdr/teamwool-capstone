@@ -1,3 +1,4 @@
+from favorites.models import FavoritesModel
 from woolnews_app.models import PostModel
 from django.shortcuts import redirect, render
 # from django.views.generic import ListView, DetailView, CreateView
@@ -24,6 +25,7 @@ def discussion_view(request, forum_id):
     discussion = DiscussionModel.objects.get(id=forum_id)
     form = CommentForm()
     comments = discussion.comments.all().order_by('-timestamp')
+    favs = FavoritesModel.objects.get(discussion=discussion)
     context = {
         'discussion':discussion,
         'form': form,
