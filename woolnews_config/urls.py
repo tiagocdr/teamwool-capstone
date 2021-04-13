@@ -19,7 +19,7 @@ from django.urls import path, include
 from woolnews_app.views import HomeView, AboutView, ContactView
 # from discussion.views import DiscussionView
 from woolnews_app import views
-from discussion.views import create_discussion, discussion_view
+from discussion.views import create_discussion, discussion_view, like_comment_forum
 from django.conf import settings
 from django.conf.urls.static import static
 from userauth.views import UserEditView, ProfileView
@@ -39,6 +39,7 @@ urlpatterns = [
     path('createforum/<int:post_id>', create_discussion, name='create forum'),
     path('postlike/<int:post_id>', views.like_post, name='like post'),
     path('commentlike/<int:comment_id>', views.like_comment, name='like comment'),
+    path('commentlikeforum/<int:comment_id>', like_comment_forum, name='like comment forum'),
     path('post/<int:post_id>', views.post_view, name='post view'),
     path('accounts/', include('userauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),

@@ -3,15 +3,43 @@ from django.shortcuts import redirect, render
 # from django.views.generic import ListView, DetailView, CreateView
 from .models import DiscussionModel
 from .forms import DiscussionForm
-from woolnews_app.models import PostModel
+from woolnews_app.models import PostModel, CommentModel
+from woolnews_app.forms import CommentForm
 # Create your views here.
 
 
 # for sake of simplicity and flexibility  reformated the class view to a function 
 # TODO: Implement comments in discussions, likes, link to the post and closing options
+
+def like_comment_forum(request, comment_id):
+    comment = CommentModel.objects.get(id=comment_id)
+    comment.votes += 1
+    comment.save()
+    user = comment.user
+    discussion = DiscussionModel.objects.get(user=user, comments=comment)
+    return redirect('forum-details', forum_id=discussion.id)
+
+
 def discussion_view(request, forum_id):
     discussion = DiscussionModel.objects.get(id=forum_id)
-    return render(request, 'forum.html',{'discussion':discussion})
+    form = CommentForm()
+    comments = discussion.comments.all().order_by('-timestamp')
+    context = {
+        'discussion':discussion,
+        'form': form,
+        'comments': comments
+        }
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            discussion.comments.create(
+                user=request.user,
+                text=data['text']
+                )
+    return render(request, 'forum.html',context)
+
 
 def create_discussion(request, post_id):
     post = PostModel.objects.get(id=post_id)
