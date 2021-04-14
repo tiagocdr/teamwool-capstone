@@ -20,6 +20,19 @@
         </ul>
     </div>
 
+    <div class='discussions'>
+        <br>
+        <p>{{user.username}}'s opened forums</p>
+        <ul>
+            {%for p in own_forums%}
+            <li>
+                <a href='/forum/{{p.id}}'>post :{{p.title}}</a>
+            </li>
+            <br>
+            {%endfor%}
+        </ul>
+    </div>
+
     <div class='saved'>
         <br>
         <p>{{user.username}}'s saved items</p>

@@ -6,21 +6,6 @@ from userauth.models import CustomUser
 from django.urls import reverse
 # TODO: Automatically default to a general genre if not provided one.
 
-class GenreModel(models.Model):
-    CHOICES = (
-        ('At','Automotive'),
-        ('Sp', 'Sports'),
-        ('At','Arts'),
-        ('Pl','Politics'),
-        ('CC','Climate Change'),
-        ('Op','Opinion'),
-        ('DJ','DadJokes'),
-        ('def', 'General')
-    )
-    name = models.CharField(choices=CHOICES, max_length=20, default='def')
-
-    def __str__(self):
-        return self.name
 
 class CommentModel(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -42,13 +27,33 @@ class CommentModel(models.Model):
 
 
 class PostModel(models.Model):
+    AUTOMOTIVE = 'AT'
+    SPORTS = 'SP'
+    ARTS = 'AR'
+    POLITICS = 'PL'
+    CLIMATE_CHANGE = 'CC'
+    OPINION = 'OP'
+    DAD_JOKES = 'DJ'
+    GENERAL = 'GEN'
+
+    CHOICES = [
+        (AUTOMOTIVE, 'Automotive'),
+        (SPORTS, 'Sports'),
+        (ARTS, 'Arts'),
+        (POLITICS, 'Politics'),
+        (CLIMATE_CHANGE, 'Climate Change'),
+        (OPINION, 'Opinion'),
+        (DAD_JOKES, 'DadJokes'),
+        (GENERAL, 'General'),
+    ]
+
     title = models.CharField(max_length=200)
-    body = models.CharField(max_length=1000)
+    body = models.TextField(max_length=1000)
     img = models.ImageField(upload_to='images/', blank=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     timestamp = models.TimeField(default=timezone.now)
     favs = models.ManyToManyField('favorites.FavoritesModel', blank=True)
-    genre = models.ForeignKey(GenreModel, on_delete=models.CASCADE,  null=True)
+    genre = models.CharField(choices=CHOICES, default=GENERAL, max_length=3)
     discussion = models.ManyToManyField(DiscussionModel, null=True, blank=True)
     comments = models.ManyToManyField(CommentModel, null=True, blank=True)
     likes = models.ManyToManyField(CustomUser, related_name='blog_posts')

@@ -2,6 +2,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView
 from woolnews_app.models import PostModel
 from favorites.models import FavoritesModel
+from discussion.models import DiscussionModel
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CustomUserCreationForm, EditProfileForm
@@ -44,6 +45,7 @@ class ProfileView(TemplateView):
         user = self.get_queryset()
         context["user"]= user
         context["own_posts"] = PostModel.objects.filter(user=user)
+        context["own_forums"] = DiscussionModel.objects.filter(user=user)
         context['saved'] = FavoritesModel.objects.filter(user=user)
         return context
 

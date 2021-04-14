@@ -53,7 +53,9 @@ def post_view(request, post_id):
     comments = post.comments.all().order_by('-timestamp')
     favs = FavoritesModel.objects.filter(post=post)
     # Check if user faved it.
-    is_faved = FavoritesModel.objects.filter(user=request.user, post=post)
+    is_faved = None
+    if request.user.is_authenticated:
+        is_faved = FavoritesModel.objects.filter(user=request.user, post=post)
     context = {
         'post': post,
         'form':comments_form,
