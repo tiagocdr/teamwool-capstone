@@ -5,7 +5,40 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Profile</h2>
+    <h2>{{user.username}}'s Profile</h2>
+    <div class='posts'>
+        <br>
+        <p>{{user.username}}'s Publications</p>
+        <ul>
+            {%for p in own_posts%}
+            <li>
+                <h6>{{p.title}}</h6>
+                <a href="/post/{{p.id}}">at {{p.timestamp}}</a>
+            </li>
+            <br>
+            {%endfor%}
+        </ul>
+    </div>
+
+    <div class='saved'>
+        <br>
+        <p>{{user.username}}'s saved items</p>
+        <ul>
+            {%for p in saved%}
+            {%if p.discussion%}
+            <li>
+                <a href='/forum/{{p.discussion.id}}'>forum: {{p.discussion.title}}</a>
+            </li>
+            {%else%}
+            <li>
+                <a href='/post/{{p.post.id}}'>post :{{p.post.title}}</a>
+            </li>
+            {%endif%}
+            <br>
+            {%endfor%}
+        </ul>
+    </div>
+    <!-- idek -->
 <div class="form-group">
     <form method = "POST" enctype="multipart/form-data">
         {% csrf_token %}
