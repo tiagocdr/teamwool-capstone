@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'woolnews_app',
     'userauth',
     'favorites',
-    'discussion'
+    'discussion',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'root')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # User custom user model
 AUTH_USER_MODEL = 'userauth.CustomUser'
@@ -127,3 +131,5 @@ AUTH_USER_MODEL = 'userauth.CustomUser'
 # Redirect user to home on login/logout
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

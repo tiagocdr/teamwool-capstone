@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block content %}
+    <h2>{{user.username}}'s Profile</h2>
+    <div class='posts'>
+        <br>
+        <p>{{user.username}}'s Publications</p>
+        <ul>
+            {%for p in own_posts%}
+            <li>
+                <h6>{{p.title}}</h6>
+                <a href="/post/{{p.id}}">at {{p.timestamp}}</a>
+            </li>
+            <br>
+            {%endfor%}
+        </ul>
+    </div>
+
+    <div class='discussions'>
+        <br>
+        <p>{{user.username}}'s opened forums</p>
+        <ul>
+            {%for p in own_forums%}
+            <li>
+                <a href='/forum/{{p.id}}'>post :{{p.title}}</a>
+            </li>
+            <br>
+            {%endfor%}
+        </ul>
+    </div>
+
+    <div class='saved'>
+        <br>
+        <p>{{user.username}}'s saved items</p>
+        <ul>
+            {%for p in saved%}
+            {%if p.discussion%}
+            <li>
+                <a href='/forum/{{p.discussion.id}}'>forum: {{p.discussion.title}}</a>
+            </li>
+            {%else%}
+            <li>
+                <a href='/post/{{p.post.id}}'>post :{{p.post.title}}</a>
+            </li>
+            {%endif%}
+            <br>
+            {%endfor%}
+        </ul>
+    </div>
+    <!-- idek -->
+<div class="form-group">
+    <form method = "POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.media}}
+        {{ form.as_p }}
+        {% comment %} {{object_list.bio}} {% endcomment %}
+      
+        {% comment %} {{post.img.url}} {% endcomment %}
+
+        <button type="submit">Upload</button>
+        <button type="submit">Post</button>
+    </form>
+</div>
+{{user.bio}}
+{% comment %} <img src="{{user.img.url}}" width="200" height="200"> {% endcomment %}
+<a href="{% url 'edit_profile' %}">edit_profile</a> 
+
+    {% endblock %}
+
