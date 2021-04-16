@@ -1,10 +1,12 @@
 
 from typing import Generator
 from django.http import request
+from django.http.response import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import DeleteView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 from woolnews_app.models import CommentModel, PostModel
 from favorites.models import FavoritesModel
 from woolnews_app.forms import PostForm, CommentForm
@@ -99,7 +101,7 @@ def create_post(request):
         {'form': form}
     )
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = PostModel
 
     success_url ="/"
