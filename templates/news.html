@@ -76,7 +76,7 @@
 
                     <article class="blog-post">
                     <a href="{% url 'post view' post.pk %}"><h2 class="blog-post-title">{{ post.title }}</a></h2>
-                    <p class="blog-post-meta">{{ post.timestamp }} by <a href="/profile/{{post.user.id}}">{{ post.user.first_name }}</a></p>
+                    <p class="blog-post-meta">{{ post.timestamp }} by <a href="/profile/{{post.user.id}}">{{ post.user.username }}</a></p>
                     {{ post.img }}
                 {% endfor %}
 

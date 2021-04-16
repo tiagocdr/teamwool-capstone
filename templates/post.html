@@ -25,7 +25,9 @@
                 <small>
                     <a href="/createforum/{{ post.id }}">Open a Discussion</a>
                 </small>
+                {%if post.img.url%} 
                 <img src="{{ post.img.url }}" class="post-image">
+                {%endif%}
             </div>
             <!-- Comment section start -->
             <div class="comments">
