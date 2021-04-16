@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from woolnews_app.views import HomeView, AboutView, ContactView, fav_post
+from woolnews_app.views import AboutView, ContactView, fav_post
 # from discussion.views import DiscussionView
 from woolnews_app import views
 from discussion.views import create_discussion, discussion_view, like_comment_forum, fav_forum
@@ -30,7 +30,7 @@ from genres.urls import urlspatterns as genres_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     # General views 
-    path('', HomeView.as_view(), name='home'),
+    path('', views.home_view, name='home'),
     path('about/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('edit_profile/', UserEditView.as_view(), name='edit_profile'),

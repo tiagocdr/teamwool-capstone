@@ -1,5 +1,6 @@
 
 from typing import Generator
+from django.db.models import query
 from django.http import request
 from woolnews_app.models import CommentModel, PostModel
 from favorites.models import FavoritesModel
@@ -7,10 +8,29 @@ from django.views.generic import ListView, DetailView, CreateView
 from woolnews_app.forms import PostForm, CommentForm
 from django.shortcuts import render, redirect
 
-# TODO: Post View
-class  HomeView(ListView):
-    model = PostModel
-    template_name = 'news.html'
+
+# This is a hack
+def get_most_faved_post(queryset):
+    obj = queryset.first()
+    counter = (0, obj)
+    for f in queryset:
+        curr_post = (0, f.post)
+        if counter[1] is not curr_post[1]:
+            counter = curr_post
+        counter[0] + 1
+
+    return counter[1] 
+    
+
+def home_view(request):
+    posts = PostModel.objects.all()
+    favorites = FavoritesModel.objects.all()
+    featured_post = get_most_faved_post(favorites)
+    context = {
+            'object_list': posts,
+            'featured_post': featured_post
+            }
+    return render(request, 'news.html', context)
 
 
 class AboutView(ListView):
@@ -40,10 +60,12 @@ def fav_post(request, post_id):
     if model:
         model.delete()
         return redirect('post view', post_id=post.id)
-    FavoritesModel.objects.create(  
+    favorite = FavoritesModel.objects.create(  
     user=request.user,
     post=post
     )
+    favorite.save()
+    post.favs.add(favorite)
     return redirect('post view', post_id=post.id)
 
 
@@ -74,6 +96,7 @@ def post_view(request, post_id):
                 )
             return redirect('post view', post_id=post.id)
     return render(request, 'post.html', context)
+
 
 def create_post(request):
     if request.method == 'POST':
