@@ -37,6 +37,7 @@ urlpatterns = [
     path('profile/<int:pk>', ProfileView.as_view(), name='profile'),
     #Post views
     path('create/', views.create_post, name='create'),
+    path('delete_post/<int:pk>', views.PostDeleteView.as_view(), name='delete_post'),
     # path('postlike/<int:post_id>', views.like_post, name='like post'),
     path('post/<int:post_id>', views.post_view, name='post view'),
     path('favpost/<int:post_id>', views.fav_post, name='fav post'),

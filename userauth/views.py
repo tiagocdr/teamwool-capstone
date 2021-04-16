@@ -4,24 +4,15 @@ from woolnews_app.models import PostModel
 from favorites.models import FavoritesModel
 from discussion.models import DiscussionModel
 from django.urls import reverse_lazy
-<<<<<<< HEAD
-from django.shortcuts import redirect, render, reverse
-from django.views.generic.edit import CreateView
-from django.views import View
-
-from .models import CustomUser
-from .forms import CustomUserCreationForm
-=======
-from django.views import generic
+from django.views import generic, View
 from .forms import CustomUserCreationForm, EditProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.forms import UserChangeForm
 from woolnews_app.forms import PostForm
 from django.contrib.auth.views import PasswordChangeView
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect, reverse
 from .models import CustomUser
 # SignUp View
->>>>>>> 276745b13cda10a698ad404ad62dd2c9c7e8b13a
 
 # TODO ask about reverse lazy..      
 
@@ -46,12 +37,6 @@ class SignUpView(View):
             login(request, user)
             return redirect(reverse("home"))
 
-<<<<<<< HEAD
-    def get(self, request):
-        template_name = "registration/signup.html"
-        form = CustomUserCreationForm()
-        return render(request, template_name, {"form": form, "header": "Signup"})
-=======
 # def user_profile(request, user_id):
 #     user = CustomUser.objects.get(id=user_id)
 #     return render(request,'user.html', {'user':user})
@@ -97,4 +82,3 @@ class UserEditView(generic.UpdateView):
         return self.request.user
    
 
->>>>>>> 276745b13cda10a698ad404ad62dd2c9c7e8b13a

@@ -1,11 +1,13 @@
 
 from typing import Generator
 from django.http import request
+from django.views.generic import ListView, DetailView, CreateView
+from django.shortcuts import render, redirect
+from django.views.generic.edit import DeleteView
+
 from woolnews_app.models import CommentModel, PostModel
 from favorites.models import FavoritesModel
-from django.views.generic import ListView, DetailView, CreateView
 from woolnews_app.forms import PostForm, CommentForm
-from django.shortcuts import render, redirect
 
 # TODO: Post View
 class  HomeView(ListView):
@@ -73,6 +75,7 @@ def post_view(request, post_id):
                 text=data['text']
                 )
             return redirect('post view', post_id=post.id)
+    
     return render(request, 'post.html', context)
 
 def create_post(request):
@@ -96,3 +99,7 @@ def create_post(request):
         {'form': form}
     )
 
+class PostDeleteView(DeleteView):
+    model = PostModel
+
+    success_url ="/"
