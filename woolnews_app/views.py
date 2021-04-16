@@ -40,10 +40,12 @@ def fav_post(request, post_id):
     if model:
         model.delete()
         return redirect('post view', post_id=post.id)
-    FavoritesModel.objects.create(  
+    favorite = FavoritesModel.objects.create(  
     user=request.user,
     post=post
     )
+    favorite.save()
+    post.favs.add(favorite)
     return redirect('post view', post_id=post.id)
 
 
@@ -52,6 +54,7 @@ def post_view(request, post_id):
     comments_form = CommentForm()
     comments = post.comments.all().order_by('-timestamp')
     favs = FavoritesModel.objects.filter(post=post)
+    print(post.favs.all())
     # Check if user faved it.
     is_faved = None
     if request.user.is_authenticated:

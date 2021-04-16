@@ -12,3 +12,6 @@ class FavoritesModel(models.Model):
 
     def __str__(self):
         return 'forum ' + str(self.discussion) + '|' + 'post '+ str(self.post) + ' | ' + str(self.user)
+
+    def get_fav_count(self):
+        return self.user.count()
