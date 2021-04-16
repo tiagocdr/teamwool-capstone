@@ -26,10 +26,12 @@ def fav_forum(request, forum_id):
     if model:
         model.delete()
         return redirect('forum-details', forum_id=discussion.id)
-    FavoritesModel.objects.create(  
+    favorite = FavoritesModel.objects.create(  
         user=request.user,
         discussion=discussion
     )
+    favorite.save()
+    discussion.favs.add(favorite)
     return redirect('forum-details', forum_id=discussion.id)
 
 
