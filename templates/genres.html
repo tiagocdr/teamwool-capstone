@@ -9,11 +9,13 @@
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
             <h1 class="display-4 fst-italic">Our Featured Post</h1>
-            <h4 >{{featured_post.title}}</h4>
             <p class="lead my-3">
-                {{featured_post.body}}
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
             </p>
-            <p class="lead mb-0"><a href="/post/{{featured_post.id}}" class="text-white fw-bold">Continue reading...</a></p>
+            <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
         </div>
     </div>
 
@@ -70,12 +72,12 @@
 
 
             <ul>
-                {% for post in object_list %}
+                {% for post in posts %}
 
                     <article class="blog-post">
                     <a href="{% url 'post view' post.pk %}"><h2 class="blog-post-title">{{ post.title }}</a></h2>
                     <p class="blog-post-meta">{{ post.timestamp }} by <a href="/profile/{{post.user.id}}">{{ post.user.username }}</a></p>
-                   <img src="{{ post.img.url }}" width=200 height=200> 
+                    {{ post.img }}
                 {% endfor %}
 
                 <p>
@@ -91,7 +93,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="p-4 mb-3 bg-light rounded">
                 <h4 class="fst-italic">About</h4>
                 <p class="mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
@@ -115,7 +117,7 @@
                     <li><a href="#">Facebook</a></li>
                 </ol>
             </div>
-        </div>
+        </div> -->
 
     </div><!-- /.row -->
 
@@ -134,7 +136,7 @@
 
 
 
-
+<!-- 
     {#    <h1>Wool Team News App: HOMEPAGE</h1>#}
     {#    {% if user.is_authenticated %}#}
     {#        Hi {{ user.first_name }}, you are on the homepage!!#}
@@ -154,7 +156,5 @@
     {#        <p>You are not logged in</p>#}
     {#        <a href="{% url 'login' %}">Log In</a> |#}
     {#        <a href="{% url 'signup' %}">Sign Up</a>#}
-    {#    {% endif %}#}
+    {#    {% endif %}#} -->
 {% endblock %}
-
-

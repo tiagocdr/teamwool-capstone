@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from woolnews_app.views import HomeView, AboutView, ContactView, fav_post, PostDeleteView
+from woolnews_app.views import AboutView, ContactView, fav_post, PostDeleteView
+# from discussion.views import DiscussionView
 from woolnews_app import views
 # from discussion.views import DiscussionView
 from discussion.views import create_discussion, discussion_view, like_comment_forum, fav_forum
@@ -24,13 +25,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from userauth.views import UserEditView, ProfileView
 from userauth.urls import urlpatterns as user_urls
+from genres.urls import urlspatterns as genres_urls
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # General views 
-    path('', HomeView.as_view(), name='home'),
+    path('', views.home_view, name='home'),
     path('about/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('edit_profile/', UserEditView.as_view(), name='edit_profile'),
@@ -53,7 +55,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
 ] 
 
-urlpatterns = urlpatterns + user_urls
+urlpatterns = urlpatterns + user_urls + genres_urls
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
                               document_root=settings.MEDIA_ROOT)
