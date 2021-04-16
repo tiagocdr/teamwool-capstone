@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'userauth',
     'favorites',
     'discussion',
+    'genres'
 ]
 
 MIDDLEWARE = [

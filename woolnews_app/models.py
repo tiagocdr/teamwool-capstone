@@ -56,10 +56,10 @@ class PostModel(models.Model):
     genre = models.CharField(choices=CHOICES, default=GENERAL, max_length=3)
     discussion = models.ManyToManyField(DiscussionModel, null=True, blank=True)
     comments = models.ManyToManyField(CommentModel, null=True, blank=True)
-    likes = models.ManyToManyField(CustomUser, related_name='blog_posts')
+    # likes = models.ManyToManyField(CustomUser, related_name='blog_posts')
 
-    def total_likes(self):
-        return self.likes.count()
+    # def total_likes(self):
+    #     return self.likes.count()
     
     def __str__(self):
         return self.title + ' | ' + str(self.user)

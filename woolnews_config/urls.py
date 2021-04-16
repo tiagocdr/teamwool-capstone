@@ -24,6 +24,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from userauth.views import UserEditView, ProfileView
 from userauth.urls import urlpatterns as user_urls
+from genres.urls import urlspatterns as genres_urls
 
 
 urlpatterns = [
@@ -51,7 +52,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
 ] 
 
-urlpatterns = urlpatterns + user_urls
+urlpatterns = urlpatterns + user_urls + genres_urls
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
                               document_root=settings.MEDIA_ROOT)
