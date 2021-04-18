@@ -109,11 +109,13 @@ def create_post(request):
 
         if form.is_valid():
             data = form.cleaned_data
+            print(data)
             post = PostModel.objects.create(
                 title=data['title'],
                 body=data['body'],
                 user=request.user,
-                img=data['img']
+                img=data['img'],
+                genre=data['genre']
             )
             return redirect('post view', post_id=post.id)
 
