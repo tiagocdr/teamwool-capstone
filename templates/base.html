@@ -1,125 +1,109 @@
 <!doctype html>
 <html lang="en">
+
+{# head #}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.82.0">
+    <meta name="author" content="Team Wool">
+    <meta name="generator" content="Python/Django based news and forum app with likes feature">
     <title>
         Wooly News App:
         {% block title %}
             {# leave empty #}
         {% endblock %}
     </title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/blog/">
-
-
-    <!-- CSS -->
+    {# css styles #}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <!-- Custom styles for this template -->
+    {# load static files #}
     {% load static %}
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-
 </head>
+
+{# body #}
 <body>
-
-<div class="container">
-    <header class="blog-header py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 pt-1">
-                {# greet user, if logged in #}
-                {% if user.is_authenticated %}
-                    <small>Welcome, {{ user.username }}!</small>
-                {% endif %}
-            </div>
-            <div class="col-4 text-center">
-                <a class="blog-header-logo text-dark" href="{% url 'home' %}">Wool News App</a>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
-                {% if user.is_authenticated %}
-                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'logout' %}">Logout</a>
-                {% else %}
-                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'signup' %}">Sign up</a>
-                    <a class="btn btn-sm btn-outline-primary" href="{% url 'login' %}">Log In</a>
-                {% endif %}
-            </div>
+{# header #}
+<header class="newsapp-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+            {# greet user, if logged in #}
+            {% if user.is_authenticated %}
+                <small>Welcome, {{ user.username }}!</small>
+            {% endif %}
         </div>
-    </header>
+        {# center title/logo #}
+        <div class="col-4 text-center">
+            <a class="newsapp-header-logo text-dark" href="{% url 'home' %}">Wooly News App</a>
+        </div>
+        {# login/logoug nav buttons #}
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            {% if user.is_authenticated %}
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'signup' %}">Sign up</a>
+                <a class="btn btn-sm btn-outline-primary" href="{% url 'login' %}">Log In</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                </li>
+{# main navigation #}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+            {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'create' %}">Create Post</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/profile/{{ request.user.id }}">Profile</a>
                 </li>
-
-
-            </ul>
-        </div>
-    </nav>
-
-    <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="/automotive">Automotive</a>
-            <a class="p-2 link-secondary" href="/arts">Arts</a>
-            <a class="p-2 link-secondary" href="/climatechange">Climate Change</a>
-            <a class="p-2 link-secondary" href="/dadjokes">DadJokes</a>
-            <!-- <a class="p-2 link-secondary" href="/general">General</a> -->
-            <a class="p-2 link-secondary" href="/opinion">Opinion</a>
-            <a class="p-2 link-secondary" href="/politics">Politics</a>
-        </nav>
+            {% endif %}
+        </ul>
     </div>
+</nav>
+
+{# genre navigation #}
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+        <a class="p-2 link-secondary" href="/automotive">Automotive</a>
+        <a class="p-2 link-secondary" href="/arts">Arts</a>
+        <a class="p-2 link-secondary" href="/climatechange">Climate Change</a>
+        <a class="p-2 link-secondary" href="/dadjokes">DadJokes</a>
+        <!-- <a class="p-2 link-secondary" href="/general">General</a> -->
+        <a class="p-2 link-secondary" href="/opinion">Opinion</a>
+        <a class="p-2 link-secondary" href="/politics">Politics</a>
+    </nav>
 </div>
 
-<main class="container">
-
+{# main content #}
+<div class="container">
     {% block content %}
         {# leave empty #}
     {% endblock %}
-
-</main><!-- /.container -->
+</div>
 
 <footer class="blog-footer">
     <small>
         News App | Q4 Capstone | TEAM WOOL
     </small>
-    <div align="center">
+    <div class="footer-nav">
         <small>
             {% if user.is_authenticated %}
                 <a href="{% url 'home' %}">Home</a> -
@@ -139,6 +123,7 @@
         <p>
             <a href="#">Back to top</a>
         </p>
+    </div>
 </footer>
 
 
