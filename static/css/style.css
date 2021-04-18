@@ -69,6 +69,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* blog posts */
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
 .blog-post {
     margin-bottom: 4rem;
 }
@@ -81,6 +97,11 @@ h1, h2, h3, h4, h5, h6 {
 .blog-post-meta {
     margin-bottom: 1.25rem;
     color: #727272;
+}
+
+.post-image {
+    width: 250px;
+    height: auto;
 }
 
 /* Footer */
