@@ -7,39 +7,54 @@
 {% block content %}
 
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
+        <div class="col-md-12 px-0">
             <!-- <h1 class="display-4 fst-italic">News Item</h1> -->
-            <div class='news_body'>
-                <h1>{{ post.title }}</h1>
-                <small><a href="/profile/{{ post.user.id }}">by: {{ post.user }}</a></small>
-                /
-                <small>category: {{ post.genre }}</small>
-                <br/>
-                <small>{{ favs }} people saved this</small>
-                <div>
-                    {% if post.img %}
-                        <img src="{{ post.img.url }}" class="post-image">
-                    {% endif %}
-                    <h4>{{ post.body }}</h4>
+            <div class='post-container'>
+                <div class="post-header">
+                    <h1 class="blog-post-title">{{ post.title }}</h1>
+                    <div class="sub-header">
+                        <small>By: <a href="/profile/{{ post.user.id }}">{{ post.user }}</a> / </small>
+                        <small>Genre: {{ post.genre }} / </small>
+                        <small>{{ favs }} People saved this / </small>
+                        <small>
+                            <a href="/delete_post/{{ post.id }}">Delete Post</a>
+                        </small>
+                    </div>
                 </div>
+
+                <div class="post-content">
+                    <div class="post-image">
+                        {% if post.img %}
+                            <img src="{{ post.img.url }}" class="post-image">
+                        {% endif %}
+                    </div>
+                    <div class="post-body">{{ post.body }}</div>
+                </div>
+
                 {% if is_faved %}
-                    <span><a href="/favpost/{{ post.id }}">Unsave</a></span>
+                    {# unsaved: unfilled heart #}
+                    <a href="/favpost/{{ post.id }}">&#9829; Unsave</a>
                 {% else %}
-                    <span><a href="/favpost/{{ post.id }}">Save</a></span>
+                    <a href="/favpost/{{ post.id }}">&#9825; Save</a>
                 {% endif %}
+                <br/>
+                <br/>
                 <small>
-                    <a href="/createforum/{{ post.id }}">Open a Discussion</a>
+                    <a href="/createforum/{{ post.id }}">Click here to open a discussion about this post!</a>
                 </small>
+                <br/>
+                <br/>
             </div>
             <!-- Comment section start -->
             <div class="comments">
                 <p>{{ lenght }} comments</p>
                 <form method="post" action="">
+                    <small>Let your voice be heard, leave a question or comment!</small>
+                    <br/>
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button class="btn btn-md btn-outline-secondary" type="submit">Comment</button>
                 </form>
-                <button class="btn btn-md btn-outline-secondary" type="submit"><a href="/delete_post/{{ post.id }}">Delete Post</a></button>
             </div>
 
             <div>

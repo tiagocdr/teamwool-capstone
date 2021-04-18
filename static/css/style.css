@@ -1,9 +1,20 @@
+body {
+    font-family: "Open Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+    /*overflow-x: hidden;*/
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-family: "Open Sans", Georgia, "Times New Roman", serif;
+    text-transform: uppercase;
 }
 
 /* header */
+
 .newsapp-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: center;
+    justify-content: space-evenly;
     line-height: 1;
     border-bottom: 1px solid #e5e5e5;
 }
@@ -23,6 +34,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* nav */
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+}
+
 .nav-scroller {
     position: relative;
     z-index: 2;
@@ -49,6 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* cards */
+
 .card-img-right {
     height: 100%;
     border-radius: 0 3px 3px 0;
@@ -70,6 +92,52 @@ h1, h2, h3, h4, h5, h6 {
 
 /* blog posts */
 
+.post-container a {
+    color: #f2f2f2;
+}
+
+.post-container a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.post-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.blog-post-title {
+    font-size: 2.5rem;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.blog-post {
+    margin-bottom: 4rem;
+}
+
+.post-body {
+    margin-bottom: 2.5rem;
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+}
+
+.post-container > {
+    margin: 12px;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -85,26 +153,32 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.blog-post {
-    margin-bottom: 4rem;
-}
-
-.blog-post-title {
-    margin-bottom: .25rem;
-    font-size: 2.5rem;
-}
-
 .blog-post-meta {
     margin-bottom: 1.25rem;
     color: #727272;
 }
 
+/* [1] The container */
 .post-image {
-    width: 250px;
-    height: auto;
+    height: 300px; /* [1.1] Set it as per your need */
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+    margin: 2rem 0 4rem 0;
+    border-radius: .25rem;
 }
 
+/* [2] Transition property for smooth transformation of images */
+.post-image img {
+    transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.post-image:hover img {
+    transform: scale(1.5);
+}
+
+
 /* Footer */
+
 .blog-footer {
     padding: 2.5rem 0;
     color: #727272;
