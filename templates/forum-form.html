@@ -8,8 +8,7 @@
 
     <main class="container">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-        <div class="col-md-12 px-0">
-            <h1 class="display-4 fst-italic">Open A Discussion...</h1><br/>
+        <div class="col-md-12 px-0 post-banner">            <h1 class="display-4 fst-italic">Open A Discussion...</h1><br/>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
