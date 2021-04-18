@@ -2,8 +2,21 @@ body {
     font-family: "Open Sans", "Lucida Grande", Verdana, Arial, sans-serif;
 }
 
+a {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Open Sans", Georgia, "Times New Roman", serif;
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
     text-transform: uppercase;
 }
 
@@ -73,7 +86,7 @@ ul {
 /* banner */
 .bg-dark {
     min-height: 100%;
-    background: linear-gradient(0deg, rgba(0, 43, 100, .9), rgba(0, 10, 23, 1)), url('../images/newspaper_bg.jpg');
+    background: linear-gradient(0deg, rgba(0, 43, 100, .9), rgba(0, 10, 23, 1)), url('../images/newspaper_bg.jpg') fixed;
     background-size: cover;
     background-blend-mode: luminosity;
     color: #f2f2f2;
@@ -115,7 +128,7 @@ ul {
     justify-content: center;
     align-items: center;
     min-height: 100%;
-    background: linear-gradient(0deg, rgba(0, 43, 100, .9), rgba(0, 10, 23, 1)), url('../images/newspaper_bg.jpg');
+    background: linear-gradient(0deg, rgba(0, 43, 100, .9), rgba(0, 10, 23, 1)), url('../images/newspaper_bg.jpg') fixed;
     background-size: cover;
     background-blend-mode: luminosity;
     width: 300px;
@@ -203,6 +216,11 @@ ul {
 .post-image img {
     filter: grayscale(100%);
     transition: transform .5s ease;
+}
+
+.thumbnail {
+    width: 250px;
+    height: 200px;
 }
 
 .post-image:hover img {
