@@ -37,9 +37,9 @@
                         <a href="{% url 'post view' post.pk %}"><small class="mb-0">continue reading...</small></a>
                     </div>
                     {# image #}
-                    <div class="col-auto d-none d-lg-block post-image">
+                    <div class="col-auto d-none d-lg-block post-image thumbnail">
                         {% if post.img %}
-                            <img src="{{ post.img.url }}" width=200 height=200>
+                            <img src="{{ post.img.url }}">
                         {% endif %}
                     </div>
                 </div>
