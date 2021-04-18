@@ -7,14 +7,16 @@
 {% block content %}
 
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-        <div class="col-md-12 px-0">
+        <div class="col-md-12 px-0 post-banner">
             <h1 class="display-4 fst-italic">Our Featured Post</h1>
             <h4>{{ featured_post.title }}</h4>
             <p class="lead my-3">
                 {{ featured_post.body }}
             </p>
-            <p class="lead mb-0"><a href="/post/{{ featured_post.id }}" class="text-white fw-bold">Continue
-                reading...</a></p>
+            <p class="lead mb-0">
+                <a href="/post/{{ featured_post.id }}" class="text-white fw-bold">Continue
+                    reading...</a>
+            </p>
         </div>
     </div>
 
@@ -35,15 +37,10 @@
                         <a href="{% url 'post view' post.pk %}"><small class="mb-0">continue reading...</small></a>
                     </div>
                     {# image #}
-                    <div class="col-auto d-none d-lg-block">
-                        {# TODO: get image post url #}
-                        <img
-                                src="{{ post.image.url }}"
-                                width="200"
-                                height="250"
-                                role="img"
-                                aria-label="post image"
-                                alt="post image"/>
+                    <div class="col-auto d-none d-lg-block post-image">
+                        {% if post.img %}
+                            <img src="{{ post.img.url }}" width=200 height=200>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -53,43 +50,30 @@
     <div class="row">
         <div class="col-md-8">
             <h3 class="pb-4 mb-4 fst-italic border-bottom">
-                From The Wool News Feed
+                From The Wooly Team:
             </h3>
 
-
-            <ul>
-                {% for post in object_list %}
-
-                    <article class="blog-post">
-                    <a href="{% url 'post view' post.pk %}"><h2 class="blog-post-title">{{ post.title }}</a></h2>
-                    <p class="blog-post-meta">{{ post.timestamp }} by <a
-                            href="/profile/{{ post.user.id }}">{{ post.user.username }}</a></p>
-                    {% if post.img %}
-                        <img src="{{ post.img.url }}" width=200 height=200>
-                    {% endif %}
-                {% endfor %}
-
-                <p>
-                    Hello!
-                    <br/>
-                    <br/>
-                    Thank you for visiting our capstone project for Q4. We built a news and forum style application with
-                    a likes feature for the news article/posts.
-                    <br/>
-                    <br/>
-                    For the full experience, please sign up for an account and post some articles! The most like
-                    article, or the 'wooliest' article is featured on the top banner.
-                    <br/>
-                    <br/>
-                    <br/>
-                    Please check out the <a href="/about">about section</a> to learn more about our team!
-                </p>
+            <p>
+                Hello!
+                <br/>
+                <br/>
+                Thank you for visiting our capstone project for Q4. We built a news and forum style application with
+                a likes feature for the news article/posts.
+                <br/>
+                <br/>
+                For the full experience, please sign up for an account and post some articles! The most like
+                article, or the 'wooliest' article is featured on the top banner.
+                <br/>
+                <br/>
+                <br/>
+                Please check out the <a href="/about">about section</a> to learn more about our team!
+            </p>
         </div>
         <aside class="col-md-4 blog-sidebar">
-            <div class="p-4 mb-3 bg-light rounded">
-                <h4 class="font-italic">Functionality:</h4>
+            <div class="p-4 mb-3 bg-light rounded aside-content">
                 <p class="mb-0">
                 <ul>
+                    <h4 class="font-italic">Functionality</h4>
                     <li>
                         Authentication
                     </li>
