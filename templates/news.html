@@ -62,10 +62,11 @@
 
                     <article class="blog-post">
                     <a href="{% url 'post view' post.pk %}"><h2 class="blog-post-title">{{ post.title }}</a></h2>
-                    <p class="blog-post-meta">{{ post.timestamp }} by <a href="/profile/{{post.user.id}}">{{ post.user.username }}</a></p>
-                    {%if post.img%}
-                   <img src="{{ post.img.url }}" width=200 height=200> 
-                   {%endif%}
+                    <p class="blog-post-meta">{{ post.timestamp }} by <a
+                            href="/profile/{{ post.user.id }}">{{ post.user.username }}</a></p>
+                    {% if post.img %}
+                        <img src="{{ post.img.url }}" width=200 height=200>
+                    {% endif %}
                 {% endfor %}
 
                 <p>
@@ -83,28 +84,31 @@
                     <br/>
                     Please check out the <a href="/about">about section</a> to learn more about our team!
                 </p>
-            </div>
-            <aside class="col-md-4 blog-sidebar">
-                <div class="p-4 mb-3 bg-light rounded">
-                    <h4 class="font-italic">About Functionality:</h4>
-                    <p class="mb-0">
-                    <ul>
-                        <li>Allows user authentication + have profile pages that links to what they've contributed
-                        </li>
-                        <li>Allows users to write news articles and post pictures with the articles conglomerates all
-                            the articles written for that genre
-                        </li>
-                        <li>Allow comments on each article
-                        </li>
-                        <li>Allows forums/discussions on each genre
-                        </li>
-                        <li>"Like" functionality for articles--up-votes/down-votes if you want, but something for
-                            immediate reactions
-                        </li>
-                    </ul>
-                </div>
-            </aside>
         </div>
+        <aside class="col-md-4 blog-sidebar">
+            <div class="p-4 mb-3 bg-light rounded">
+                <h4 class="font-italic">Functionality:</h4>
+                <p class="mb-0">
+                <ul>
+                    <li>
+                        Authentication
+                    </li>
+                    <li>
+                        News Articles
+                    </li>
+                    <li>
+                        Comments
+                    </li>
+                    <li>
+                        Forum
+                    </li>
+                    <li>
+                        'Save' to a liked list
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
     </main>
 
 {% endblock %}
