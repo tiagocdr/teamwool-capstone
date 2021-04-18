@@ -1,33 +1,28 @@
-/* stylelint-disable selector-list-comma-newline-after */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
 
-.blog-header {
+/* header */
+.newsapp-header {
     line-height: 1;
     border-bottom: 1px solid #e5e5e5;
 }
 
-.blog-header-logo {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+.newsapp-header-logo {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
     font-size: 2.25rem;
 }
 
-.blog-header-logo:hover {
+.newsapp-header-logo:hover {
     text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
-}
 
 .display-4 {
     font-size: 2.5rem;
 }
 
-@media (min-width: 768px) {
-    .display-4 {
-        font-size: 3rem;
-    }
-}
-
+/* nav */
 .nav-scroller {
     position: relative;
     z-index: 2;
@@ -52,6 +47,8 @@ h1, h2, h3, h4, h5, h6 {
     font-size: .875rem;
 }
 
+
+/* cards */
 .card-img-right {
     height: 100%;
     border-radius: 0 3px 3px 0;
@@ -71,18 +68,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Pagination */
-.blog-pagination {
-    margin-bottom: 4rem;
-}
-
-.blog-pagination > .btn {
-    border-radius: 2rem;
-}
-
-/*
- * Blog posts
- */
+/* blog posts */
 .blog-post {
     margin-bottom: 4rem;
 }
@@ -97,9 +83,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #727272;
 }
 
-/*
- * Footer
- */
+/* Footer */
 .blog-footer {
     padding: 2.5rem 0;
     color: #727272;
@@ -108,11 +92,3 @@ h1, h2, h3, h4, h5, h6 {
     border-top: .05rem solid #e5e5e5;
 }
 
-.blog-footer p:last-child {
-    margin-bottom: 0;
-}
-
-.post-image {
-    height: 500px;
-    width: auto;
-}
