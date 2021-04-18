@@ -16,15 +16,17 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
-from woolnews_app.views import AboutView, ContactView, fav_post
+from woolnews_app.views import AboutView, ContactView, fav_post, PostDeleteView
 # from discussion.views import DiscussionView
 from woolnews_app import views
+# from discussion.views import DiscussionView
 from discussion.views import create_discussion, discussion_view, like_comment_forum, fav_forum
 from django.conf import settings
 from django.conf.urls.static import static
 from userauth.views import UserEditView, ProfileView
 from userauth.urls import urlpatterns as user_urls
 from genres.urls import urlspatterns as genres_urls
+
 
 
 urlpatterns = [
@@ -37,6 +39,7 @@ urlpatterns = [
     path('profile/<int:pk>', ProfileView.as_view(), name='profile'),
     #Post views
     path('create/', views.create_post, name='create'),
+    path('delete_post/<int:pk>', PostDeleteView.as_view(), name='delete_post'),
     # path('postlike/<int:post_id>', views.like_post, name='like post'),
     path('post/<int:post_id>', views.post_view, name='post view'),
     path('favpost/<int:post_id>', views.fav_post, name='fav post'),

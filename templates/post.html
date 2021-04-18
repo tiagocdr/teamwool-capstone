@@ -11,32 +11,35 @@
             <!-- <h1 class="display-4 fst-italic">News Item</h1> -->
             <div class='news_body'>
                 <h1>{{ post.title }}</h1>
-                <p><a href="/profile/{{ post.user.id }}">>by: {{ post.user }}</a></p>
-                <p>category: {{ post.genre }}</p>
-                <p>{{ favs }} people saved this</p>
+                <small><a href="/profile/{{ post.user.id }}">by: {{ post.user }}</a></small>
+                /
+                <small>category: {{ post.genre }}</small>
+                <br/>
+                <small>{{ favs }} people saved this</small>
                 <div>
-                    {{ post.body }}
+                    {% if post.img %}
+                        <img src="{{ post.img.url }}" class="post-image">
+                    {% endif %}
+                    <h4>{{ post.body }}</h4>
                 </div>
-                {%if is_faved%}
-                <span><a href="/favpost/{{post.id}}">Unsave</a></span>
-                {%else%}
-                <span><a href="/favpost/{{post.id}}">Save</a></span>
-                {%endif%}
+                {% if is_faved %}
+                    <span><a href="/favpost/{{ post.id }}">Unsave</a></span>
+                {% else %}
+                    <span><a href="/favpost/{{ post.id }}">Save</a></span>
+                {% endif %}
                 <small>
                     <a href="/createforum/{{ post.id }}">Open a Discussion</a>
                 </small>
-                {%if post.img%} 
-                <img src="{{ post.img.url }}" class="post-image">
-                {%endif%}
             </div>
             <!-- Comment section start -->
             <div class="comments">
-                <h3>{{ lenght }} comments</h3>
+                <p>{{ lenght }} comments</p>
                 <form method="post" action="">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button class="btn btn-md btn-outline-secondary" type="submit">Comment</button>
                 </form>
+                <button class="btn btn-md btn-outline-secondary" type="submit"><a href="/delete_post/{{ post.id }}">Delete Post</a></button>
             </div>
 
             <div>
