@@ -1,10 +1,20 @@
+body {
+    font-family: "Open Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+    /*overflow-x: hidden;*/
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-family: "Open Sans", Georgia, "Times New Roman", serif;
+    text-transform: uppercase;
 }
 
 /* header */
 
 .newsapp-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: center;
+    justify-content: space-evenly;
     line-height: 1;
     border-bottom: 1px solid #e5e5e5;
 }
@@ -24,6 +34,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* nav */
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+}
 
 .nav-scroller {
     position: relative;
