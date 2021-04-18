@@ -220,7 +220,13 @@ ul {
 
 .thumbnail {
     width: 250px;
-    height: 200px;
+    margin: auto;
+}
+
+.thumbnail img {
+    width: auto;
+    height: 100%;
+    overflow: hidden;
 }
 
 .post-image:hover img {
