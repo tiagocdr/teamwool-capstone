@@ -1,6 +1,7 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.db.models.base import Model
 from django.utils import timezone
+
 from discussion.models import DiscussionModel
 from userauth.models import CustomUser
 from django.urls import reverse
