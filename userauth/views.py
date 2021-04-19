@@ -14,15 +14,7 @@ from django.shortcuts import get_object_or_404, render, redirect, reverse
 from .models import CustomUser
 # SignUp View
 
-# TODO ask about reverse lazy..      
 
-# @login_required
-# def index_view(request):
-
-#     template_name = "index.html"
-#     posts = Post.objects.all().order_by("-created_at")
-#     context = {"posts": posts}
-#     return render(request, template_name, context)
 
 class SignUpView(View):
     def post(self, request):
@@ -37,16 +29,6 @@ class SignUpView(View):
             login(request, user)
             return redirect(reverse("home"))
 
-# def user_profile(request, user_id):
-#     user = CustomUser.objects.get(id=user_id)
-#     return render(request,'user.html', {'user':user})
-    
-
-
-class SignUpView(generic.CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'registration/signup.html'
 
 
 class PasswordsChangeView(PasswordChangeView):

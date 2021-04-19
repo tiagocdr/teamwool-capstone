@@ -130,7 +130,7 @@ STATICFILES_DIRS = [
 AUTH_USER_MODEL = 'userauth.CustomUser'
 
 # Redirect user to home on login/logout
-LOGIN_REDIRECT_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
