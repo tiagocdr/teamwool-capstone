@@ -9,16 +9,17 @@ a {
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
+    transition: transform .5s ease;
 }
 
 a:hover {
-    color: #000000;
-    text-decoration: none;
+    transform: scale(1.05);
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Playfair Display", Georgia, "Times New Roman", serif;
     text-transform: uppercase;
+
 }
 
 ul {
@@ -60,6 +61,14 @@ ul {
     align-content: stretch;
 }
 
+.navbar a {
+    transition: transform .5s ease;
+}
+
+.navbar a:hover {
+    transform: scale(1.1);
+}
+
 .nav-scroller {
     position: relative;
     z-index: 2;
@@ -99,10 +108,12 @@ ul {
     color: #f2f2f2;
 }
 
+.bg-dark a {
+    color: #ffffff;
+}
+
 /* cards */
 .card-text {
-    /*white-space: nowrap;*/
-    /*width: 95%;*/
     height: 75px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -220,11 +231,6 @@ ul {
     border-radius: .25rem;
 }
 
-.post-image img {
-    filter: grayscale(100%);
-    transition: transform .5s ease;
-}
-
 .thumbnail {
     width: 250px;
     margin: auto;
@@ -236,15 +242,93 @@ ul {
     overflow: hidden;
 }
 
-.post-image:hover img {
+.post-image img,
+.member-image {
+    border-radius: 1rem;
+    filter: grayscale(100%);
+    transition: transform .5s ease;
+}
+
+.post-image:hover img,
+.member-image:hover {
     transform: scale(1.2);
     filter: none;
 }
 
 /* Comments */
 .comments {
+    color: whitesmoke;
     max-width: 800px;
     margin: auto;
+}
+
+/* About Page */
+.team-section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch;
+    text-align: justify;
+}
+
+.team-section svg {
+    width: 1.5rem;
+    height: auto;
+    margin: .5rem;
+}
+
+.team-col {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch;
+    flex-grow: 0;
+    /* just to show the width of the column */
+    background-color: rgba(0, 0, 0, .5);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: .5rem;
+    box-shadow: 10px 10px 5px black;
+    transition: transform .5s ease;
+}
+
+.team-col:hover {
+    transform: scale(1.1);
+}
+
+.team-col svg,
+.team-col small {
+    margin: .5rem;
+    transition: transform .2s ease;
+}
+
+.team-col svg:hover,
+.team-col small:hover {
+    margin: .5rem;
+    transform: scale(1.2);
+}
+
+.member-title {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-size: 28px;
+}
+
+.member-sub-title {
+    font-size: 16px;
+}
+
+.member-body {
+    margin: .5rem;
+}
+
+.member-image {
+    margin: 1rem;
+}
+
+.member-footer {
+    margin: .5rem;
 }
 
 /* Footer */
@@ -254,9 +338,4 @@ ul {
     text-align: center;
     background-color: #f9f9f9;
     border-top: .05rem solid #e5e5e5;
-}
-
-
-.comment {  
-    color: whitesmoke;
 }
