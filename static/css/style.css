@@ -83,6 +83,12 @@ ul {
     font-size: .875rem;
 }
 
+.btn {
+    font-family: "Open Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+    text-transform: lowercase;
+    margin: auto;
+}
+
 /* banner */
 .bg-dark {
     min-height: 100%;
