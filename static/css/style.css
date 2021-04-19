@@ -1,20 +1,37 @@
 body {
     font-family: "Open Sans", "Lucida Grande", Verdana, Arial, sans-serif;
-    /*overflow-x: hidden;*/
+    overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Open Sans", Georgia, "Times New Roman", serif;
+a {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
-/* header */
+a:hover {
+    color: #000000;
+    text-decoration: none;
+}
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    text-transform: uppercase;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* header */
 .newsapp-header {
     display: flex;
     flex-flow: row nowrap;
     justify-items: center;
     justify-content: space-evenly;
+    background-color: #f9f9f9;
     line-height: 1;
     border-bottom: 1px solid #e5e5e5;
 }
@@ -34,7 +51,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* nav */
-
 .navbar {
     display: flex;
     flex-direction: column;
@@ -68,8 +84,29 @@ h1, h2, h3, h4, h5, h6 {
     font-size: .875rem;
 }
 
+.btn {
+    font-family: "Open Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+    text-transform: lowercase;
+    margin: auto;
+}
+
+/* banner */
+.bg-dark {
+    min-height: 100%;
+    background: linear-gradient(0deg, rgba(0, 43, 100, .9), rgba(0, 10, 23, 1)), url('../images/newspaper_bg.jpg') fixed;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    color: #f2f2f2;
+}
 
 /* cards */
+.card-text {
+    /*white-space: nowrap;*/
+    /*width: 95%;*/
+    height: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .card-img-right {
     height: 100%;
@@ -90,7 +127,34 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* aside section  */
+.aside-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    background: linear-gradient(0deg, rgba(0, 43, 100, .9), rgba(0, 10, 23, 1)), url('../images/newspaper_bg.jpg') fixed;
+    background-size: cover;
+    background-blend-mode: luminosity;
+    width: 300px;
+    margin: auto;
+    color: #f2f2f2;
+    text-transform: capitalize;
+    line-height: 2;
+}
+
+.aside-content h4 {
+    font-weight: bold;
+}
+
 /* blog posts */
+.post-container,
+.post-banner {
+    max-width: 800px;
+    margin: auto;
+}
 
 .post-container a {
     color: #f2f2f2;
@@ -138,15 +202,6 @@ h1, h2, h3, h4, h5, h6 {
     margin: 12px;
 }
 
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
@@ -158,27 +213,41 @@ h1, h2, h3, h4, h5, h6 {
     color: #727272;
 }
 
-/* [1] The container */
 .post-image {
-    height: 300px; /* [1.1] Set it as per your need */
-    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+    height: 500px;
+    overflow: hidden;
     margin: 2rem 0 4rem 0;
     border-radius: .25rem;
 }
 
-/* [2] Transition property for smooth transformation of images */
 .post-image img {
+    filter: grayscale(100%);
     transition: transform .5s ease;
 }
 
-/* [3] Finally, transforming the image when container gets hovered */
-.post-image:hover img {
-    transform: scale(1.5);
+.thumbnail {
+    width: 250px;
+    margin: auto;
 }
 
+.thumbnail img {
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+}
+
+.post-image:hover img {
+    transform: scale(1.2);
+    filter: none;
+}
+
+/* Comments */
+.comments {
+    max-width: 800px;
+    margin: auto;
+}
 
 /* Footer */
-
 .blog-footer {
     padding: 2.5rem 0;
     color: #727272;
