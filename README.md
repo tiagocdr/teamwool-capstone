@@ -8,7 +8,7 @@ Members:
 
 - Chris Stranger <chrisstranger1@gmail.com>
 - Santiago Toro <tiagoelcoder@gmail.com>
-- Eleanor Hall
+- Eleanor Hall <ruthhall97@gmail.com>
 - Joseph Dubon <josephdubon@pm.me>
 
 ## Approved Project Functionality
@@ -28,7 +28,6 @@ Approved by: Kano
 ## Installation
 
 ```console
-python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
