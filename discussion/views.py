@@ -6,12 +6,14 @@ from .models import DiscussionModel
 from .forms import DiscussionForm
 from woolnews_app.models import PostModel, CommentModel
 from woolnews_app.forms import CommentForm
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
 # for sake of simplicity and flexibility  reformated the class view to a function 
-# TODO: Implement comments in discussions, likes, link to the post and closing options
 
+@login_required
 def like_comment_forum(request, comment_id):
     comment = CommentModel.objects.get(id=comment_id)
     comment.votes += 1
@@ -20,6 +22,8 @@ def like_comment_forum(request, comment_id):
     discussion = DiscussionModel.objects.get(user=user, comments=comment)
     return redirect('forum-details', forum_id=discussion.id)
 
+
+@login_required
 def fav_forum(request, forum_id):
     discussion = DiscussionModel.objects.get(id=forum_id)
     model = FavoritesModel.objects.filter(user=request.user,discussion=discussion)
@@ -61,6 +65,7 @@ def discussion_view(request, forum_id):
     return render(request, 'forum.html',context)
 
 
+@login_required
 def create_discussion(request, post_id):
     post = PostModel.objects.get(id=post_id)
     if request.method == 'POST':
