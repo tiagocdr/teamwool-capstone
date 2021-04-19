@@ -11,6 +11,8 @@ from django.contrib import messages
 from woolnews_app.models import CommentModel, PostModel
 from favorites.models import FavoritesModel
 from woolnews_app.forms import PostForm, CommentForm
+from django.contrib.auth.decorators import login_required
+
 
 
 # This is a hack
@@ -49,6 +51,8 @@ class ContactView(ListView):
     template_name = 'contact.html'
 # TEMP Contact view
 
+
+@login_required
 def like_comment(request, comment_id):
     comment = CommentModel.objects.get(id=comment_id)
     comment.votes += 1
@@ -58,6 +62,7 @@ def like_comment(request, comment_id):
     return redirect('post view', post_id=post.id)
 
 
+@login_required
 def fav_post(request, post_id):
     post = PostModel.objects.get(id=post_id)
     model = FavoritesModel.objects.filter(user=request.user,post=post)
@@ -82,6 +87,7 @@ def post_view(request, post_id):
     is_faved = None
     if request.user.is_authenticated:
         is_faved = FavoritesModel.objects.filter(user=request.user, post=post)
+    
     context = {
         'post': post,
         'form':comments_form,
@@ -91,10 +97,12 @@ def post_view(request, post_id):
         'is_faved': is_faved
         }
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            print('ups')
+            return redirect('/accounts/login/')
         form = CommentForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            print(data)
             post.comments.create(
                 user=request.user,
                 text=data['comment']
@@ -103,7 +111,7 @@ def post_view(request, post_id):
     
     return render(request, 'post.html', context)
 
-
+@login_required
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
