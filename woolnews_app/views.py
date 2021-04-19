@@ -94,9 +94,10 @@ def post_view(request, post_id):
         form = CommentForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
+            print(data)
             post.comments.create(
                 user=request.user,
-                text=data['text']
+                text=data['comment']
                 )
             return redirect('post view', post_id=post.id)
     

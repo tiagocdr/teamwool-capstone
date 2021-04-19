@@ -58,10 +58,12 @@
 
             <div>
                 {% for c in comments %}
-                    <h3><a href="/profile/{{ c.user.id }}">{{ c.user }}</a></h3>
+                    <h3 ><a class='comment' href="/profile/{{ c.user.id }}">{{ c.user }}</a></h3>
                     <p>{{ c.text }}</p>
                     <span>{{ c.timestamp }}</span> <span>likes:{{ c.votes }}</span>
-                    <a href="/commentlike/{{ c.id }}">Like</a>
+                    <p>
+                        <a class='comment' href="/commentlike/{{ c.id }}">Like</a>
+                    </p>
                 {% endfor %}
             </div>
         </div>
