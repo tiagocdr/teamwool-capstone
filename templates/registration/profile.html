@@ -89,19 +89,6 @@
 
     </div>
     <!-- idek -->
-    <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.media }}
-            {{ form.as_p }}
-            {% comment %} {{object_list.bio}} {% endcomment %}
-
-            {{ post.img.url }}
-
-            <button type="submit">Upload</button>
-            <button type="submit">Post</button>
-        </form>
-    </div>
 
 {% endblock %}
 
