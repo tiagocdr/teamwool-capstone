@@ -16,21 +16,25 @@ from .models import CustomUser
 
 
 
-class SignUpView(View):
-    def post(self, request):
-        template_name = "registration/signup.html"
-        form = CustomUserCreationForm()
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            user = CustomUser.objects.create_user(
-                username=data.get("username"), password=data.get("password")
-            )
-            login(request, user)
-            return redirect(reverse("home"))
+# class SignUpView(View):
+#     def post(self, request):
+#         template_name = "registration/signup.html"
+#         form = CustomUserCreationForm()
+#         form = CustomUserCreationForm(request.POST)
+#         if form.is_valid():
+#             data = form.cleaned_data
+#             user = CustomUser.objects.create_user(
+#                 username=data.get("username"), password=data.get("password")
+#             )
+#             login(request, user)
+#             return redirect(reverse("home"))
 
 
-
+class SignUpView(generic.CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
+    
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangeForm
     success_url = reverse_lazy('home')
