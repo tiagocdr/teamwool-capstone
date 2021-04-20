@@ -384,3 +384,8 @@ input {
     background-color: #f9f9f9;
     border-top: .05rem solid #e5e5e5;
 }
+
+.notfound {  
+    width: 400px;
+    height: auto;
+}
