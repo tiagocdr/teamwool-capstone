@@ -1,13 +1,10 @@
 
-from typing import Generator
-from django.db.models import query
-from django.http import request
-from django.http.response import HttpResponseRedirect
+from django.http import request, HttpResponseForbidden
+
 from django.views.generic import ListView, DetailView, CreateView
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
 from woolnews_app.models import CommentModel, PostModel
 from favorites.models import FavoritesModel
 from woolnews_app.forms import PostForm, CommentForm
@@ -138,5 +135,13 @@ def create_post(request):
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = PostModel
-
     success_url ="/"
+    template_name = 'woolnews_app/postmodel_confirm_delete.html'
+    def get(self, request, *args, **kwargs):
+        object_instance = self.get_object()
+        object_user = object_instance.user 
+
+        if object_user == self.request.user or self.request.user.is_superuser:
+            return render(request, self.template_name)
+        else:
+            return HttpResponseForbidden('Permission Error')
