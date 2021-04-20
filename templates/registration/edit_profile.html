@@ -1,18 +1,30 @@
-{% load static %}
+{% extends 'layout/base.html' %}
 
-{% block title %} Edit Profile {% endblock %}
+{% block title %}
+    Edit Profile
+{% endblock %}
+
 {% block content %}
 
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+        <div class="col-md-12 px-0 post-banner">
+            <h1 class="display-4 fst-italic">Edit Profile</h1>
+            <p class="lead my-3">
+                Add some profile details to share with the Wooly News App Community!
+                <br/>
+                <br/>
+                <small>"Be yourself. Be kind. Be friendly."</small>
+            </p>
+        </div>
+        <hr/>
+        <div class="col-md-12 px-0 post-banner post-form">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
 
-<h1> Edit Profile... </h1>
-<br/>
-<div class="form-group">
- <form method='POST'> {% csrf_token %}
-        {{form.as_p}}
-        <button class="btn btn-secondary">
-        Update Profile
-        </button>
-    </form>
-</div>
+    </div>
 
 {% endblock %}
