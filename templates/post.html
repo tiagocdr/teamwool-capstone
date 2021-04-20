@@ -15,9 +15,11 @@
                         <small>By: <a href="/profile/{{ post.user.id }}">{{ post.user }}</a> / </small>
                         <small>Genre: {{ post.genre }} / </small>
                         <small>{{ favs }} People saved this / </small>
+                        {%if post.user == request.user or request.user.is_superuser %}
                         <small>
                             <a href="/delete_post/{{ post.id }}">Delete Post</a>
                         </small>
+                        {%endif%}
                     </div>
                 </div>
 
@@ -29,12 +31,14 @@
                     </div>
                     <div class="post-body">{{ post.body }}</div>
                     <br>
+                    {%if post.sources%}
                     <h4>Sources</h4>
                     <ul>
                         <li>
                             <a href="{{post.sources}}">{{post.sources}}</a>
                         </li>
                     </ul>
+                    {%endif%}
                 </div>
                 <br>
                 {% if is_faved %}
