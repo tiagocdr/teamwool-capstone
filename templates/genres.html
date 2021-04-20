@@ -5,13 +5,12 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-12 px-0 post-banner">
-            <h1 class="display-4 fst-italic"></h1>
+            <h1 class="display-4 fst-italic team-section"></h1>
             {% for post in posts %}
 
-                <div class="col-md-6">
+                <div class="col-md-12 team-col">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
                             {# genre #}
@@ -32,11 +31,8 @@
                         </div>
                     </div>
                 </div>
-
+                <br/>
             {% endfor %}
-            <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
         </div>
     </div>
-
-
 {% endblock %}
