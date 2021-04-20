@@ -326,6 +326,10 @@ input {
     transform: scale(1.2);
 }
 
+.team-col img {
+    width: 150px;
+}
+
 .member-title {
     font-family: "Playfair Display", Georgia, "Times New Roman", serif;
     font-size: 28px;
