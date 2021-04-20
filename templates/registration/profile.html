@@ -1,94 +1,96 @@
 {% extends 'layout/base.html' %}
 
 {% block title %}
-    Log In
+    Profile
 {% endblock %}
 
 {% block content %}
-    <h2>{{ user.username }}'s Profile</h2>
-    <small>
-        <a href="{% url 'edit_profile' %}">edit_profile</a>
-    </small>
-    <div class="user-bio-area">
-        {#<img src="{{ user.img.url }}" width="200" height="200">#}
-        <ul>
-            <li>
-                <strong>Name: </strong>{{ user.first_name }} {{ user.last_name }}
-            </li>
-            <li>
-                <strong>Username: </strong>{{ user.username }}
-            </li>
-            <li>
-                <strong>Email: </strong>{{ user.email }}
-            </li>
-            <li>
-                <strong>Bio: </strong>{{ user.bio }}
-            </li>
-        </ul>
-    </div>
 
-    <div class='posts'>
-        <br>
-        <h4>{{ user.username }}'s Publications</h4>
-        {% if own_forums %}
-            <ul>
-                {% for p in own_posts %}
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+        <div class="col-md-12 px-0 post-banner">
+            <h1 class="display-4 fst-italic">{{ user.username }}'s Profile</h1>
+            <small>
+                <a href="{% url 'edit_profile' %}">edit_profile</a>
+            </small>
+        </div>
+        <hr/>
+
+        <div class="profile-container">
+
+            <div class="user-bio-area">
+                {#<img src="{{ user.img.url }}" width="200" height="200">#}
+                <ul>
                     <li>
-                        <h6>{{ p.title }}</h6>
-                        <a href="/post/{{ p.id }}">at {{ p.timestamp }}</a>
+                        <strong>Name: </strong>{{ user.first_name }} {{ user.last_name }}
                     </li>
-                    <br>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No published posts yet...</p>
-        {% endif %}
-
-    </div>
-
-    <div class='discussions'>
-        <br>
-        <h4>{{ user.username }}'s opened forums</h4>
-        {% if own_forums %}
-            <ul>
-                {% for p in own_forums %}
                     <li>
-                        <a href='/forum/{{ p.id }}'>post :{{ p.title }}</a>
+                        <strong>Username: </strong>{{ user.username }}
                     </li>
-                    <br>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No Opened Forums</p>
-        {% endif %}
+                    <li>
+                        <strong>Email: </strong>{{ user.email }}
+                    </li>
+                    <li>
+                        <strong>Bio: </strong>{{ user.bio }}
+                    </li>
+                </ul>
+            </div>
 
+            <div class='posts'>
+                <p>{{ user.username }}'s Publications</p>
+                {% if own_forums %}
+                    <ul>
+                        {% for p in own_posts %}
+                            <li>
+                                <h6>{{ p.title }}</h6>
+                                <a href="/post/{{ p.id }}">at {{ p.timestamp }}</a>
+                            </li>
+                            <br>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No published posts yet...</p>
+                {% endif %}
+
+            </div>
+
+            <div class='discussions'>
+                <p>{{ user.username }}'s opened forums</p>
+                {% if own_forums %}
+                    <ul>
+                        {% for p in own_forums %}
+                            <li>
+                                <a href='/forum/{{ p.id }}'>post :{{ p.title }}</a>
+                            </li>
+                            <br>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No Opened Forums</p>
+                {% endif %}
+            </div>
+
+            <div class='saved'>
+                <p>{{ user.username }}'s saved items</p>
+                {% if saved %}
+                    <ul>
+                        {% for p in saved %}
+                            {% if p.discussion %}
+                                <li>
+                                    <a href='/forum/{{ p.discussion.id }}'>forum: {{ p.discussion.title }}</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href='/post/{{ p.post.id }}'>post :{{ p.post.title }}</a>
+                                </li>
+                            {% endif %}
+                            <br>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No Saved Items</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
-
-    <div class='saved'>
-        <br>
-        <p>{{ user.username }}'s saved items</p>
-        {% if saved %}
-
-            <ul>
-                {% for p in saved %}
-                    {% if p.discussion %}
-                        <li>
-                            <a href='/forum/{{ p.discussion.id }}'>forum: {{ p.discussion.title }}</a>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a href='/post/{{ p.post.id }}'>post :{{ p.post.title }}</a>
-                        </li>
-                    {% endif %}
-                    <br>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No Saved Items</p>
-        {% endif %}
-
-    </div>
-    <!-- idek -->
 
 {% endblock %}
-
