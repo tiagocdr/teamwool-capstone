@@ -7,13 +7,24 @@
 {% block content %}
 
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-        <div class="col-md-12 px-0 post-banner">            <h1 class="display-4 fst-italic">News Draft</h1><br/>
+        <div class="col-md-12 px-0 post-banner">
+            <h1 class="display-4 fst-italic">News Draft</h1>
+            <p class="lead my-3">
+                Create a post and share with the Wooly News App Community!
+                <br/>
+                <small>Always be mindful of posts and conversations.</small>
+            </p>
+            <hr/>
+        </div>
+
+        <div class="col-md-12 px-0 post-banner post-form">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button class="btn btn-md btn-outline-secondary" type="submit">Submit</button>
             </form>
         </div>
+
     </div>
 
 {% endblock %}
