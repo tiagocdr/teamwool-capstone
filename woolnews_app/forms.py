@@ -8,7 +8,7 @@ from woolnews_app.models import PostModel
 class PostForm(forms.ModelForm):
     class Meta:
         model = PostModel
-        fields = ['title', 'img', 'body', 'genre']
+        fields = ['title', 'img', 'body', 'genre', 'sources']
 
 # Comment form
 class CommentForm(forms.Form):

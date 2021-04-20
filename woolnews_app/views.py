@@ -124,7 +124,8 @@ def create_post(request):
                 body=data['body'],
                 user=request.user,
                 img=data['img'],
-                genre=data['genre']
+                genre=data['genre'],
+                sources=data['sources']
             )
             return redirect('post view', post_id=post.id)
 

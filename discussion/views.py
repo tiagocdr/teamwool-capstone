@@ -60,7 +60,7 @@ def discussion_view(request, forum_id):
             data = form.cleaned_data
             discussion.comments.create(
                 user=request.user,
-                text=data['text']
+                text=data['comment']
                 )
     return render(request, 'forum.html',context)
 
@@ -75,7 +75,7 @@ def create_discussion(request, post_id):
             forum = post.discussion.create(
                 user=request.user,
                 title=data['title'],
-                body=data['body'],
+                body=data['text'],
                 post=post
                 )
             return redirect('forum-details', forum_id=forum.id)

@@ -28,8 +28,15 @@
                         {% endif %}
                     </div>
                     <div class="post-body">{{ post.body }}</div>
+                    <br>
+                    <h4>Sources</h4>
+                    <ul>
+                        <li>
+                            <a href="{{post.sources}}">{{post.sources}}</a>
+                        </li>
+                    </ul>
                 </div>
-
+                <br>
                 {% if is_faved %}
                     {# unsaved: unfilled heart #}
                     <a href="/favpost/{{ post.id }}">&#9829; Unsave</a>
