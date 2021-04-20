@@ -111,7 +111,6 @@ def post_view(request, post_id):
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
-
         if form.is_valid():
             data = form.cleaned_data
             print(data)

@@ -25,7 +25,7 @@
                             <a href="{% url 'post view' post.pk %}"><small class="mb-0">continue reading...</small></a>
                         </div>
                         {# image #}
-                        <div class="col-auto d-none d-lg-block post-image thumbnail">
+                        <div class="col-auto d-none d-lg-block post-image thumbnail" style="height: 150px; width: 150px;">
                             {% if post.img %}
                                 <img src="{{ post.img.url }}">
                             {% endif %}
