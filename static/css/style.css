@@ -255,6 +255,23 @@ ul {
     filter: none;
 }
 
+.post-form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch;
+}
+
+/*.post-form-title {*/
+/*}*/
+form,
+label,
+textarea,
+input {
+    width: 100%;
+}
+
 /* Comments */
 .comments {
     color: whitesmoke;
@@ -329,6 +346,34 @@ ul {
 
 .member-footer {
     margin: .5rem;
+}
+
+/*  Contact Page */
+.contact-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    flex-grow: 1;
+    /* just to show the width of the column */
+    background-color: rgba(0, 0, 0, .5);
+    width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: 10px 10px 5px black;
+    transition: transform .5s ease;
+}
+
+.contact-list li {
+    flex: 1;
+    margin: .5rem;
+    transition: transform .5s ease;
+}
+
+.contact-list li:hover {
+    transform: scale(1.1);
 }
 
 /* Footer */
