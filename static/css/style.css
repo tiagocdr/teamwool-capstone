@@ -264,7 +264,6 @@ ul {
 }
 
 /*.post-form-title {*/
-/*}*/
 form,
 label,
 textarea,
@@ -348,6 +347,18 @@ input {
     margin: .5rem;
 }
 
+/* Profile Page */
+.profile-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profile-container > div {
+    margin: 2rem;
+}
+
 /*  Contact Page */
 .contact-list {
     display: flex;
@@ -385,7 +396,7 @@ input {
     border-top: .05rem solid #e5e5e5;
 }
 
-.notfound {  
+.notfound {
     width: 400px;
     height: auto;
 }
