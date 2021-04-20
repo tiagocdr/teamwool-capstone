@@ -46,12 +46,14 @@ def discussion_view(request, forum_id):
     favs = FavoritesModel.objects.filter(discussion=discussion)
     # Check if user faved it.
     is_faved = FavoritesModel.objects.filter(user=request.user, discussion=discussion)
+    print
     context = {
         'discussion':discussion,
         'form': form,
         'comments': comments,
         'favs': len(favs),
-        'is_faved': is_faved
+        'is_faved': is_faved,
+        'lenght': len(comments)
         }
 
     if request.method == 'POST':
@@ -75,7 +77,7 @@ def create_discussion(request, post_id):
             forum = post.discussion.create(
                 user=request.user,
                 title=data['title'],
-                body=data['text'],
+                body=data['body'],
                 post=post
                 )
             return redirect('forum-details', forum_id=forum.id)

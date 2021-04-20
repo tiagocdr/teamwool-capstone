@@ -136,5 +136,8 @@ AUTH_USER_MODEL = 'userauth.CustomUser'
 # Redirect user to home on login/logout
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+# Media files from user
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+# STATIFILES_STORAGE 
+
