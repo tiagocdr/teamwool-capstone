@@ -1,7 +1,5 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
-
 from discussion.models import DiscussionModel
 from userauth.models import CustomUser
 from django.urls import reverse
@@ -49,8 +47,7 @@ class PostModel(models.Model):
     genre = models.CharField(choices=CHOICES, default=GENERAL, max_length=3)
     discussion = models.ManyToManyField(DiscussionModel, null=True, blank=True)
     comments = models.ManyToManyField(CommentModel, null=True, blank=True)
-    # Add sources.
-    
+    sources = models.URLField(max_length=250, blank=True)
     def __str__(self):
         return self.title + ' | ' + str(self.user)
 
