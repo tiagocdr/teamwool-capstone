@@ -1,0 +1,11 @@
+asgiref @ file:///home/santi/.cache/pypoetry/artifacts/9c/90/26/d9fa1dfd567d8ba46faa44b741eb6442f3b97eb9f10a40bc1ad7a7f10e/asgiref-3.3.1-py3-none-any.whl
+Django @ file:///home/santi/.cache/pypoetry/artifacts/80/9f/e8/7dbac946baeff06413dea73548571fa188758ff084c6258f4e50a09137/Django-3.1.7-py3-none-any.whl
+django-environ @ file:///home/santi/.cache/pypoetry/artifacts/87/d0/e4/2e59fd1e2526f0f52d73260ba0356904cb9c2bcd82299d5a3f88b3e341/django_environ-0.4.5-py2.py3-none-any.whl
+flake8 @ file:///home/santi/.cache/pypoetry/artifacts/09/d4/ba/f775b54656730d949029bb13567c7e05972fd4dce4ec8f780263878eae/flake8-3.9.0-py2.py3-none-any.whl
+mccabe @ file:///home/santi/.cache/pypoetry/artifacts/96/5e/5f/21ae5296697ca7f94de4da6e21d4936d74029c352a35202e4c339a4253/mccabe-0.6.1-py2.py3-none-any.whl
+Pillow @ file:///home/santi/.cache/pypoetry/artifacts/af/01/9e/9e59a2244e85a37841afdb59a3dc7feb5f6d414d71e255a4d8b25c063d/Pillow-8.2.0-cp39-cp39-manylinux1_x86_64.whl
+pycodestyle @ file:///home/santi/.cache/pypoetry/artifacts/4c/30/97/026c283ef67eb248e5b7e6fad1f8ffb99dae50c11fd93eb939fd7c1f46/pycodestyle-2.7.0-py2.py3-none-any.whl
+pyflakes @ file:///home/santi/.cache/pypoetry/artifacts/eb/c4/2c/47fcc1b3f387b1f7033e85b3ac6ee7772338461a8de8ac3977c6a7dcc1/pyflakes-2.3.1-py2.py3-none-any.whl
+pytz @ file:///home/santi/.cache/pypoetry/artifacts/b0/a7/8d/54de3ab4d1ff29abbbca1e9ccbaefdc2a1b290138311b84f73bee16de1/pytz-2021.1-py2.py3-none-any.whl
+sqlparse @ file:///home/santi/.cache/pypoetry/artifacts/bc/af/02/8aa71b17fd39b26b858293918c5c6412f83768a0bfd0a4626f660aa5f8/sqlparse-0.4.1-py3-none-any.whl
+whitenoise @ file:///home/santi/.cache/pypoetry/artifacts/49/34/b8/8c82abbc2b1712f73c0cf521fb37dd8d50868e799d425f701b78a0cd29/whitenoise-5.2.0-py2.py3-none-any.whl
